@@ -1,0 +1,105 @@
+<% article_contents = article.articlecontents.order(:paragraph_no) # 記事の内容(articlecontents) %>
+<% if article.is_toc && article_contents.exists?(content_type: HEADLINE_CONTENT_TYPE) # 目次 %>
+  <div class="article-toc">
+    <p class="article-toc__title">目次</p>
+    <ul id="toc-list" class="article-toc__list">
+      <% article_contents.each do |c| %>
+        <% if c.content_type == HEADLINE_CONTENT_TYPE %>
+          <li class="article-toc__item"><a href="<%= "#content-#{c.id}" %>"><%= c.paragraph_title %></a></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<% article_contents.each do |c| %>
+  <% case c.content_type
+     when HEADLINE_CONTENT_TYPE # 見出し %>
+    <div id="<%= "content-#{c.id}" %>" class="articlecontent-show-item articlecontent-show-item_headline">
+      <h2 class="articlecontent-headline"><%= c.paragraph_title %></h2>
+    </div>
+
+  <% when SUBHEAD_CONTENT_TYPE # 小見出し %>
+    <div id="<%= "content-#{c.id}" %>" class="articlecontent-show-item articlecontent-show-item_subhead">
+      <h3 class="articlecontent-subhead"><%= c.paragraph_title %></h3>
+    </div>
+
+  <% when TEXT_CONTENT_TYPE # テキスト %>
+    <div id="<%= "content-#{c.id}" %>" class="articlecontent-show-item articlecontent-show-item_text">
+      <p class="articlecontent-text"><%= html_br(c.paragraph_text) %></p>
+    </div>
+
+  <% when IMAGE_CONTENT_TYPE # 画像 %>
+    <div id="<%= "content-#{c.id}" %>" class="articlecontent-show-item articlecontent-show-item_image">
+      <% if c.image_type == ACCOUNT_IMAGE_IMAGE_TYPE # アカウント画像 %>
+        <% image = c.account_image %>
+        <% if image.present? %>
+          <% account = image.account %>
+          <%= link_to image_tag(c.account_image.image.url, class: 'articlecontent-image'), "/images/#{image.id}" %>
+          <% if account.present? %>
+            <div class="articlecontent-account-from">Photo by <%= link_to account.name, "/accounts/#{account.id}" %></div>
+          <% end %>
+        <% else # account_imageが削除されている場合はデフォルト画像を表示 %>
+          <%= image_tag "#{CDN_IMAGE_ROOT}#{DEFAULT_IMAGE}", class: 'articlecontent-image'%>
+        <% end %>
+      <% else # アップロード画像、引用画像 %>
+        <%= link_to image_tag(c.output_image_url, class: 'articlecontent-image'), c.output_image_url %>
+        <% if c.image_from %>
+          <p class="articlecontent-from">出典：<%= link_to c.image_from.sub(/http:\/\/|https:\/\//,'').sub(/\/.*/,''), c.image_from, target: '_blank' %></p>
+        <% end %>
+      <% end %>
+    </div>
+
+  <% when EMBEDDED_VIDEO_CONTENT_TYPE # 埋め込み動画 %>
+    <div id="<%= "content-#{c.id}" %>" class="articlecontent-show-item articlecontent-show-item_embedded-video">
+      <iframe width="560" height="315" src="<%= c.image_from %>" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+  <% when QUOTATION_CONTENT_TYPE # 引用 %>
+    <div id="<%= "content-#{c.id}" %>" class="articlecontent-show-item articlecontent-show-item_quotation">
+      <blockquote cite="<%= c.link_url %>" class="articlecontent-quotation icon-quotation">
+        <p><%= html_br(c.paragraph_text) %></p>
+      </blockquote>
+      <p class="articlecontent-from">出典：<%= link_to c.link_url.sub(/http:\/\/|https:\/\//,'').sub(/\/.*/,''), c.link_url, target: '_blank' %></p>
+    </div>
+
+  <% when LINK_CONTENT_TYPE # リンク %>
+    <div id="<%= "content-#{c.id}" %>" class="articlecontent-show-item articlecontent-show-item_link">
+      <% case c.image_type
+         when BUTTON_LINK_TYPE # ボタン型 %>
+        <%= link_to c.link_name, c.link_url, target: '_blank', class: 'articlecontent-link' %>
+      <% when TEXT_LINK_TYPE # テキスト型 %>
+        <dl class="articlecontent-text-link">
+          <dt class="articlecontent-text-link__title"><%= link_to truncate(c.paragraph_title, length: 100), c.link_url, target: '_blank' %></dt>
+          <dd class="articlecontent-text-link__description"><%= truncate(c.paragraph_text, length: 500) %></dd>
+        </dl>
+      <% end %>
+    </div>
+
+  <% when INSTAGRAM_CONTENT_TYPE # Instagram埋め込み %>
+    <div id="<%= "content-#{c.id}" %>" class="articlecontent-show-item articlecontent-show-item_instagram">
+      <%= render 'instagram_embed', author: c.paragraph_title, url: c.image_from, type: c.image_type %>
+    </div>
+
+  <% when TWEET_CONTENT_TYPE # ツイート %>
+    <div id="<%= "content-#{c.id}" %>" class="articlecontent-show-item articlecontent-show-item_tweet">
+      <div class="articlecontent-tweet">
+        <% tweet = c.tweet %>
+        <%= link_to twitter_user_url(tweet.user_screen_name), target: '_blank', class: 'articlecontent-tweet__left' do %>
+          <%= image_tag(tweet.profile_image_url, alt: tweet.user_name, class: 'articlecontent-tweet-profile-image') %>
+        <% end %>
+        <div class="articlecontent-tweet__right">
+          <%= link_to twitter_user_url(tweet.user_screen_name), target: '_blank' do %>
+            <span class="articlecontent-tweet-user-name"><%= tweet.user_name %><span>@<%= tweet.user_screen_name %></span></span>
+          <% end %>
+          <p class="articlecontent-tweet-text"><%= text_with_link(tweet.tweet_text).html_safe %></p>
+          <% if tweet.media_url %>
+            <%= link_to twitter_tweet_url(tweet.user_screen_name, tweet.tweet_id), target: '_blank' do %>
+              <%= image_tag(tweet.media_url, class: 'articlecontent-tweet-media') %>
+            <% end %>
+          <% end %>
+          <time datetime="<%= tweet.tweet_at.strftime('%Y-%m-%dT%H:%M%:z') %>" class="articlecontent-tweet-time"><%= tweet.tweet_at.strftime('%Y-%m-%d') %></time>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

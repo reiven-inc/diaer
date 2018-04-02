@@ -1,0 +1,56 @@
+<% content_for :head_info do %>
+<% title = '無料会員登録｜DIAER [ディアー]'
+   description = 'DIAER[ディアー]の無料会員登録ページです。みんなで結婚式のトレンドやアイディアをシェアしよう！' %>
+<title><%= title %></title>
+<meta name="description" content="<%= description %>">
+<meta property="og:title" content="<%= title %>">
+<meta property="og:image" content="<%= "#{CDN_IMAGE_ROOT}/diaer/ogp.png" %>">
+<meta property="og:type" content="article">
+<meta property="og:url" content="<%= request.url %>">
+<meta property="og:description" content="<%= description %>">
+<% end %>
+<% content_for :semantic_data do %>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement":
+  [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item":
+      {
+        "@id": "<%= SITE_ROOT %>",
+        "name": "DIAERトップ"
+      }
+    }
+  ]
+}
+</script>
+<% end %>
+<main class="main-content">
+  <div class="h-breadcrumb">
+    <ol class="breadcrumb-list container">
+      <li class="breadcrumb-list__item"><a href="/">DIAERトップ</a></li>
+      <li class="breadcrumb-list__item">無料会員登録</li>
+    </ol>
+  </div>
+  <div class="container">
+    <div class="column-container">
+      <h1 class="headline-26n">無料会員登録</h1>
+      <div class="contact-form-container contact-form-container_finish">
+        <p class="message">会員登録が完了しました。<br>引き続きDIAERをお楽しみください。</p>
+        <ul class="form-button-list list">
+          <li class="list__button"><a href="/" class="button__item button__item_theme">トップへ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-breadcrumb">
+      <ol class="breadcrumb-list container">
+        <li class="breadcrumb-list__item"><a href="/">DIAERトップ</a></li>
+        <li class="breadcrumb-list__item">無料会員登録</li>
+      </ol>
+    </div>
+  </div>
+</main>

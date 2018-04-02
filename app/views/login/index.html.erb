@@ -1,0 +1,75 @@
+<% content_for :head_info do %>
+<% title = 'ログイン｜DIAER [ディアー]'
+   description = 'DIAER[ディアー]のログインページです。' %>
+<title><%= title %></title>
+<meta name="description" content="<%= description %>">
+<meta property="og:title" content="<%= title %>">
+<meta property="og:image" content="<%= "#{CDN_IMAGE_ROOT}/diaer/ogp.png" %>">
+<meta property="og:type" content="article">
+<meta property="og:url" content="<%= request.url %>">
+<meta property="og:description" content="<%= description %>">
+<% end %>
+<% content_for :semantic_data do %>
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "WebSite",
+  "name" : "DIAER",
+  "alternateName" : "ディアー",
+  "url" : "<%= SITE_ROOT %>"
+}
+</script>
+<% end %>
+<main class="main-content">
+  <div class="h-breadcrumb">
+    <ol class="breadcrumb-list container">
+      <li class="breadcrumb-list__item"><a href="/">DIAERトップ</a></li>
+      <li class="breadcrumb-list__item">ログイン</li>
+    </ol>
+  </div>
+  <div class="container">
+    <div class="column-container">
+      <h1 class="headline-26n">ログイン</h1>
+      <div class="invite-form-container invite">
+        <div class="invite__column invite__column_left">
+          <h2 class="invite__title">DIAERに会員登録すると出来ること</h2>
+          <ul class="invite__point point">
+            <li class="point__item">お気に入りの記事を『LOVE』できる。</li>
+          </ul>
+          <p class="invite__attention">まだ登録されていない方はこちら</p>
+          <div class="invite__link-button"><a href="/users/new">無料会員登録</a></div>
+        </div>
+        <div class="invite__column invite__column_right">
+          <%= form_tag '/login' do %>
+            <table class="invite__table table">
+              <caption class="table__name">ログイン</caption>
+              <tr>
+                <th scope="row" class="table__cell table__cell_header"><label for="signup_mail">メールアドレス</label></th>
+                <td class="table__cell table__cell_data">
+                  <%= text_field_tag :mail, params[:mail], placeholder: '登録したメールアドレス', class: 'table__input' %>
+                  <% if @alert1 %><p class="table__error"><%= @alert1 %></p><% end %>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" class="table__cell table__cell_header"><label for="signup_pass">パスワード</label></th>
+                <td class="table__cell table__cell_data">
+                  <%= password_field_tag :pass, params[:pass], placeholder: 'パスワードを入力', class: 'table__input' %>
+                  <% if @alert2 %><p class="table__error"><%= @alert2 %></p><% end %>
+                </td>
+              </tr>
+            </table>
+              <% if @alert3 %><p class="table__error"><%= @alert3 %></p><% end %>
+            <div class="invite__submit submit"><%= submit_tag 'ログイン', class: 'submit__button' %></div>
+            <p class="invite__forget"><%= link_to 'パスワード・登録情報をお忘れの方はこちら', '/login/forget' %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="f-breadcrumb">
+      <ol class="breadcrumb-list container">
+        <li class="breadcrumb-list__item"><a href="/">DIAERトップ</a></li>
+        <li class="breadcrumb-list__item">ログイン</li>
+      </ol>
+    </div>
+  </div>
+</main>

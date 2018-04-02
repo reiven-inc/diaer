@@ -1,0 +1,198 @@
+// 共通スタイル
+@charset "UTF-8";
+
+// リセットスタイル
+li {
+  list-style: none;
+}
+
+strong {
+  font-weight: normal;
+}
+
+input[type="submit"],
+input[type="file"] {
+  cursor: pointer;
+}
+
+:focus {
+  outline: none;
+}
+
+.dblock {
+  display: block;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.mb36 {
+  margin-bottom: 36px;
+}
+
+.pl10 {
+  padding-left: 10px;
+}
+
+.pl20 {
+  padding-left: 20px;
+}
+
+.clearfix {
+  &::after {
+    clear: both;
+    content: '';
+    display: block;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+// グレーグラデーションスタイルのセレクトボックス
+.select-box {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAMAAABV0m3JAAAAS1BMVEUAAAAzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzNOfcgEAAAAGHRSTlMA6yH28ObKNy0U3dzTvrOIemxgVEpADgphy6LoAAAAaklEQVQI12XLRw7DMBBDUapYxb373/+kAZRAsOO3mQFBKpioh2iCWnzSTfK0sg3GqrKGxkqpnK9SKcPo6bKK3OGjisPR55L1uEM/uyOc0hlwu6oNhusaYNPNCuMIqx4WgEV/Zpj1Mk31/QBILgT5g44XmQAAAABJRU5ErkJggg==) right 8px center no-repeat;
+  background-size: 10px auto;
+  border: 1px solid $black-d6-color;
+  border-radius: 3px;
+  color: $text-black-color;
+  padding: 7px 30px 7px 6px;
+}
+
+// imgタグを親要素一杯に広げるためのスタイル
+.cover-img {
+  height: 100%;
+  width: 100%;
+}
+
+// コンテナー、幅の定義と真ん中寄せの処理
+.container {
+  margin: 0 auto;
+  width: $site-width;
+}
+
+.main-content {
+  > .container {
+    padding-bottom: 30px;
+  }
+}
+
+.main-content_gray {
+  background-color: $black-f6-color;
+}
+
+// メッセージ
+.run-message {
+  background-color: $black-fa-color;
+  color: $black-5-color;
+  font-size: 150%;
+  font-weight: bold;
+  padding: 11px;
+  text-align: center;
+  width: 100%;
+}
+
+// その他のコンポーネント(分類が難しいためここに記載)
+// 広告
+.ad-area {
+  width: $right-column-width;
+}
+
+.ad-double-area {
+  margin-top: 26px;
+  overflow: hidden;
+
+  .c-pagination + & {
+    margin-top: 12px;
+  }
+}
+
+.ad-double-unit {
+  width: 336px;
+}
+
+.ad-double-unit__left {
+  float: left;
+}
+
+.ad-double-unit__right {
+  float: right;
+}
+
+// 検索結果の件数
+.search-count {
+  border-bottom: 1px solid $black-e4-color;
+  color: $black-9-color;
+  font-size: 87.5%;
+  margin-bottom: 16px;
+  padding: 10px 0 8px;
+}
+
+// カテゴリーの絞込み
+.head-narrowing {
+  color: $theme-color;
+  font-size: 87.5%;
+  font-weight: normal;
+  line-height: 1.5;
+
+  &::before {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAMAAABhEH5lAAAATlBMVEUAAADwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIA1bixJAAAAGXRSTlMAHN0N6M/Iqpb89rl0OHgIrY1vYVVSSywBueAuUwAAAI5JREFUGNNlzVkOgzAMRdFA5hDmodz9b7Q1oUFq38+LjuxYfaKzS5jpUDW9oaTTX4ng1z1bsMW0wfTyOAcIF2UQkczERtrh1R2dWKQTaz3UlU3YK/myYciVbJmasOctL9ikDxiKjA4z3n8ya5lx0DbltIXUeQs8FiIS0z6mmiX4sI1NtSeXOfVnUf2Yi8MbpHoJa1JDDcEAAAAASUVORK5CYII=);
+    content: '';
+    display: inline-block;
+    height: 18px;
+    vertical-align: -3px;
+    width: 18px;
+  }
+}
+
+.narrowing {
+  margin-bottom: 30px;
+}
+
+.narrowing-list {
+  margin-top: 15px;
+  overflow: hidden;
+}
+
+$narrowing-item-width: 218px;
+$narrowing-item-interval: 18px;
+
+.narrowing-list-item {
+  border-bottom: 1px solid $black-d8-color;
+  float: left;
+  margin-bottom: 10px;
+  width: $narrowing-item-width;
+
+  &:not(:nth-child(3n)) {
+    margin-right: $narrowing-item-interval;
+  }
+
+  a {
+    color: $text-black-color;
+    display: block;
+    font-size: 81.3%;
+    line-height: 1.4;
+    padding: 11px 20px 10px 10px;
+    position: relative;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &::after {
+      background: transparent;
+      border-right: 1px solid $theme-color;
+      border-top: 1px solid $theme-color;
+      content: '';
+      display: block;
+      height: 8px;
+      position: absolute;
+      right: 5px;
+      top: 16px;
+      transform: rotate(45deg);
+      width: 8px;
+    }
+  }
+}

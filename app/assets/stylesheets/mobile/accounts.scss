@@ -1,0 +1,412 @@
+// アカウント関連CSS
+@charset "UTF-8";
+
+
+// アカウントページ系
+.account-content {
+  border-top: 1px solid $black-e-color;
+  margin-top: 15px;
+}
+
+
+// マップ領域
+.access-map {
+  height: 300px;
+}
+
+// 詳細へのリンク
+.c-list-link {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-e-color;
+
+  a {
+    color: $text-black-color;
+    display: block;
+    font-size: 87.5%;
+    padding: 20px 0;
+    text-align: center;
+  }
+}
+
+// 1列に何個画像を並べるか
+$images-per-row: 3;
+// 画像の間の距離
+$images-interval: 3px;
+
+// アカウント画像一覧
+.image-list {
+  background-color: $white-color;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -$images-interval;
+}
+
+.image-list-item {
+  flex-grow: 1;
+  margin: 0 $images-interval $images-interval 0;
+  width: 100% / $images-per-row - 5; // flexboxのレイアウトが崩れないように係数は調整
+
+  a {
+    display: block;
+  }
+
+  &:nth-of-type(#{$images-per-row}n) {
+    margin-right: 0;
+  }
+}
+
+.image-list-image {
+  width: 100%;
+}
+
+.empty-message {
+  margin: 30px 0;
+  text-align: center;
+}
+
+// アカウント画像詳細
+.account-info {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-e-color;
+  display: table;
+  min-height: 50px; // アカウントが削除されたとき用
+  padding: 15px;
+  position: relative;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.account-info-image {
+  display: table-cell;
+  vertical-align: middle;
+  width: 30px;
+
+  img {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+  }
+}
+
+.account-info-name {
+  color: $text-black-color;
+  display: table-cell;
+  font-size: 87.5%;
+  overflow: hidden;
+  padding-left: 14px;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.account-image-area {
+  position: relative;
+}
+
+.account-image-main {
+  width: 100%;
+}
+
+.image-info-comment-area {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-e-color;
+  padding: 34px 15px 10px;
+}
+
+.image-info-comment {
+  color: $text-black-color;
+  font-size: 87.5%;
+  line-height: 1.3;
+  padding-bottom: 10px;
+}
+
+.image-info-edit-area {
+  bottom: 0;
+  left: 0;
+  list-style: none;
+  margin-bottom: 0;
+  padding: 0 24px 20px;
+  position: absolute;
+  width: 100%;
+}
+
+.image-info-edit-item {
+  padding-top: 14px;
+
+  &:first-of-type {
+    border-top: 1px solid $black-e-color;
+  }
+}
+
+$narrowing-menu-bar-height: 45px;
+
+// 写真トップページの表示メニュー
+.narrowing-menu {
+  margin: 14px 0;
+}
+
+.narrowing-menu-bar {
+  display: flex;
+}
+
+.narrowing-menu-item {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-e-color;
+  border-top: 1px solid $black-e-color;
+  color: $text-black-color;
+  flex-grow: 1;
+}
+
+.narrowing-select-wrap {
+  position: relative;
+}
+
+// select要素、text-alignを指定したいためこの要素は透明にする
+.narrowing-select {
+  height: $narrowing-menu-bar-height;
+  opacity: 0;
+  width: 100%;
+}
+
+// select要素の表示用要素
+.narrowing-select-text {
+  font-size: 87.5%;
+  line-height: $narrowing-menu-bar-height;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+
+  &::before {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAYBAMAAAA8HAFZAAAAHlBMVEUAAAAzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzOYOQtZAAAACXRSTlMA9V8pCtWg1qHFILGiAAAAUklEQVQI12NgYGBSYAABQ2EQyRI51QFIsc2cmQCkNGfOnMTAwCw5c+ZEAwbXmUBQwpAJomYwkAs6QdqnMbiDqBCo0TCLGDgg1rJUTnWAOQnqQAD36Bt/BBo4eAAAAABJRU5ErkJggg==);
+    background-size: 6px 12px;
+    content: '';
+    display: inline-block;
+    height: 12px;
+    margin-right: 10px;
+    vertical-align: -1px;
+    width: 6px;
+  }
+}
+
+.narrowing-button-wrap {
+  align-items: center;
+  display: flex;
+}
+
+.narrowing-button-wrap-active {
+  border-bottom-color: $white-color;
+
+  .narrowing-button {
+    color: $theme-color;
+    height: $narrowing-menu-bar-height;
+
+    &::before {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAASFBMVEUAAADwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDVCqQxAAAAF3RSTlMABfh/65Pp0sbBV0xBPDgZEO6tlmdoZV2b7z4AAAC3SURBVCjPhZNXDsJADETtbek98O5/U0QEGxIleL5WftK6jSVLm1gm51IZG5WzRh/ICn480jpB4dtBdWh9Aan+gbpA1UlWV8Gimc64VQ5aHfOXR6ZeTuon4icvbqc7d2z5x8QjByE/n6R3/Z5KrrBUeBENdNe4I6g0FHKNpaCRiL/Dnigl7R1uKSUw3OGBIA7d4idt08QZ2PjcKM1ozBiLMVRjJf8WGkbDDoaZDCsaRjbOwDoi4wRfHXkSxbbqoDAAAAAASUVORK5CYII=);
+    }
+  }
+}
+
+.narrowing-button {
+  border-left: 1px solid $black-e-color;
+  font-size: 87.5%;
+  height: 23px;
+  line-height: 23px;
+  width: 100%;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &::before {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAATlBMVEUAAAAzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzO4SX6oAAAAGXRSTlMABer4f5PGwVdMQTw4GRDt0q2WZ9HQaGXvdfaAtQAAAMJJREFUKM+Fk+0OgjAMRdtuAwFhfut5/xc1Et0CAXt/bT3J2rW3UqRdaiwEa1KnstYUjSKL05IeDE6xH1XHPp7ADlKlF2iHeh9auGihZ8JVFroGzj+eeB1lpWMmffMSKq08MOefjEcJQjk+sU/9kVa2sLREETWGbTxgKh032cZyp5NE3MORJA39Hu5pxBj38IhJQOf4SnM3CQ52HndKcz7mtUXzv6Y6I3EG6tlhNlPeNJNjRcfI/hrUJcoU5bJEzgq+AYNXE6F4XEzFAAAAAElFTkSuQmCC);
+    background-size: 15px;
+    content: '';
+    display: inline-block;
+    height: 15px;
+    margin-right: 10px;
+    vertical-align: -3px;
+    width: 15px;
+  }
+}
+
+.narrowing-menu-extension {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-e-color;
+  padding: 20px 15px 15px;
+}
+
+.narrowing-menu-extension-item {
+  align-items: center;
+  border-bottom: 1px solid $black-e-color;
+  color: $text-black-color;
+  display: flex;
+  width: 100%;
+
+  &:first-child {
+    border-top: 1px solid $black-e-color;
+  }
+}
+
+.narrowing-menu-extension-item-key {
+  flex-wrap: wrap;
+  font-size: 75%;
+  min-width: 75px;
+}
+
+.narrowing-menu-extension-item-value {
+  flex-grow: 1;
+  font-size: 75%;
+  line-height: 50px;
+  min-width: 75px;
+  text-align: left;
+}
+
+// iOSがfont-size16px以下のselectをfocusするとズームしてしまうため
+// font-sizeを16pxのまま、transform scaleで12pxになるように調整
+.narrowing-menu-extension-item-select {
+  font-size: 16px;
+  line-height: 50px;
+  transform: scale(.75);
+  transform-origin: 0;
+  width: 100%;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.narrowing-menu-extension-buttons {
+  display: flex;
+}
+
+.narrowing-menu-extension-buttons-item {
+  flex-grow: 1;
+  margin-top: 15px;
+
+  &:first-of-type {
+    flex-basis: 100px;
+    margin-right: 15px;
+    min-width: 100px;
+  }
+}
+
+// アカウント画像のカラーリスト
+.color-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 0 6px;
+}
+
+.color-list-item {}
+
+.color-icon {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: normal;
+  position: relative;
+
+  &::before {
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 68px;
+    margin: 4px;
+    width: 68px;
+  }
+}
+
+.color-icon-white {
+  &::before {
+    background-color: $image-color-white-background;
+    border: 1px solid $image-color-white-border;
+  }
+}
+
+.color-icon-pink {
+  &::before {
+    background-color: $image-color-pink;
+  }
+}
+
+.color-icon-blue {
+  &::before {
+    background-color: $image-color-blue;
+  }
+}
+
+.color-icon-red {
+  &::before {
+    background-color: $image-color-red;
+  }
+}
+
+.color-icon-yellow {
+  &::before {
+    background-color: $image-color-yellow;
+  }
+}
+
+.color-icon-orange {
+  &::before {
+    background-color: $image-color-orange;
+  }
+}
+
+.color-icon-green {
+  &::before {
+    background-color: $image-color-green;
+  }
+}
+
+.color-icon-purple {
+  &::before {
+    background-color: $image-color-purple;
+  }
+}
+
+.color-icon-beige {
+  &::before {
+    background-color: $image-color-beige;
+  }
+}
+
+.color-icon-black {
+  &::before {
+    background-color: $image-color-black;
+  }
+}
+
+.color-icon-brown {
+  &::before {
+    background-color: $image-color-brown;
+  }
+}
+
+.color-icon-gray {
+  &::before {
+    background-color: $image-color-gray;
+  }
+}
+
+.color-icon-silver {
+  &::before {
+    background-image: $image-color-silver-gradient;
+  }
+}
+
+.color-icon-gold {
+  &::before {
+    background-image: $image-color-gold-gradient;
+  }
+}
+
+.color-icon-other {
+  &::before {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIgAAACICAMAAAALZFNgAAACGVBMVEUAAAAAPoqYjSiIABiFABgxSl4AQZIAQpUAR56EABgAPouekiqiliseZzIaXCyDABeXjCgbXi0AQI4bXy4cYS8cYi+NABkAQ5aPABqomyySABoARp0eajOXABsfazOfkyodZDAARJqtoC6uoS6YABucABwRWnCtoC0bXS0AP4ybjymckCkAQI8cYC6LABmMABkcYzAcZDCjlyulmCwARJesny4fajOXABsfbDQASKCwoi6ypC8RW2+KABmhlSodZDAdZTEARJqSABqpnC2qnS2VABuYABsbXC0bXi0bXi2ckCkAQJAAQZEAQpSMABmOABmjlyuQABqomy0eaDIARZuUABsARpweaTMARpyrni2toC4AR58fajMAR5+voi6XABsfbDSaABsASqUgbjWdAByypC+JABkdZTGQABqQABoeaDKTABoARpweaDIARpweaDIeaDIeaTOVABuXABuZABwASaMASKCCABcaXCwAPYmViij////LxqTm5NTT29Wcqsa1rnlrgq2htKWMJjb5+PXDnKAmUZOpa3L09fjs6+DSzrFCY5zEvpZzknqtpWjR1+Pf5eDp3d64wdW7yL6lnVadk0H39fXp6/Hq7ut9kLaTqZfFzNzi0dOqtc3f3Mm8tohihmo4a0Tx6erd4eqNnb7TuLtYc6VOeVjz8uqgWGHH0srZ1b26jZKWQk3axceuvrLLqq6EnomyfYOhNQOXAAAAd3RSTlMA/PTj8wXPuj749dS6if39+vXl5NTNu6+uiIZZWFc8zq6HQj08CgkH+PHl4uDg0czCuq6enVtCQTEwMBoO1cO1nIyMfnBsLvvy8d/X1cXFtrGbjYR9dG1tampXSCsoKCgbGxkZGQ7XoKCefHx1dXR0a2lpSzMcG10gpQkAAAbsSURBVHjazNbLSypRHMDxA44LFyriA5EKFxZufLQpFzeKoFttiohoE1QU98nlPuH3gwOzGJFWgiGIiAsVQoref+GdYzpTw7y0mTl+oVAXzodzZs5PMmnzy3/WkzsrPkEIAGYj29FYMR38vbRAPGz+73rCFwY1VAtFi8ElP/Ggj6lCADShpmx8v0RcLbPnA51Qp+jaHHGp85QP9EP9csEz4nzLiQAYhUZtLjq9LLN5MAlNis84yVgB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) no-repeat;
+    background-size: 68px;
+  }
+}

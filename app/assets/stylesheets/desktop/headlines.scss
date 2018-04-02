@@ -1,0 +1,122 @@
+// 見出し関連CSS
+@charset "UTF-8";
+
+// 大見出し
+.headline-26n {
+  font-size: 162.5%;
+  font-weight: normal;
+  line-height: 1.3;
+}
+
+.headline-26n__explanation {
+  color: $black-6-color;
+  font-size: 81.2%;
+  line-height: 1.31;
+  margin-top: 14px;
+}
+
+// 英語が先頭に来る小見出し
+.c-headline {
+  border-bottom: 1px solid $black-e-color;
+  height: 28px;
+  margin-bottom: 6px;
+  overflow: hidden;
+  padding-bottom: 5px;
+
+  .c-headline__title-english {
+    @include pt-sans;
+    float: left;
+    font-size: 144%;
+  }
+
+  .c-headline__title {
+    color: $black-9-color;
+    float: left;
+    font-size: 75%;
+    font-weight: normal;
+    padding: 8px 0 0 6px;
+  }
+
+  .c-headline__supplement {
+    color: $black-9-color;
+    float: right;
+    font-size: 69%;
+    padding-top: 8px;
+  }
+
+  .c-headline__rss {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAdVBMVEXwgIDwgIDwgIDwgIAAAADwgIDwgIDwgID////wg4P//Pz72tr609P50ND5yMj0oqL++Pj98fH86en2srL96+v3ubn97e34wsLyjIzxh4f++vr739/5y8v1pqb+9PT85eX1rKzznZ3ykJDyj4/2r6/1ra3yk5PmqT0HAAAAB3RSTlPwrfMnACglsLAVVgAAAQdJREFUKM+Fk+uCgiAQhSHdBEQE71rbVnt5/0dch8uYYTZ/RD44Zw4iSY+UZJtF6DElCcK4ZkiznaKE7OGDpaVhosv7kkfcYsNcXdR9CwuGVQwxPrOldB3h7FMq2aAAf8RYQ105fhpj7FQ6x/k2zriyXK7wrWI6b13PteX1I+58T9/I9bCRW1/hTXl5xAWmbsHfRvxbMP855RfHf+ETwODsMYaymybw/wIj/hRszK1p6K58zs3tqd3nhfDsF+++qdpg2nr1HLEK0wamfRSDeAJczQNw1369WB9L4zELB4FYhlauXqVciY9STApy8kJ0N3t/hHHB9i/yu9/gY2f7DNOEHl4o0yT9By3KHr88+D24AAAAAElFTkSuQmCC);
+    background-size: 15px;
+    display: inline-block;
+    height: 15px;
+    margin: -2px 0 0 8px;
+    vertical-align: -3px;
+    width: 15px;
+  }
+
+  .column-side & {
+    margin: 24px 0 0;
+
+    &.mt0 {
+      margin-top: 0;
+    }
+  }
+}
+
+// 日本語のみの小見出し
+.c-headline-ja {
+  border-bottom: 1px solid $black-e-color;
+  font-size: 112.5%;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  overflow: hidden;
+  padding-bottom: 3px;
+}
+
+// 日本語のみの小見出しスモールサイズ
+// アカウントトップページで使用
+.c-headline-sm-ja {
+  border-bottom: 1px solid $black-e-color;
+  line-height: 1.3;
+  margin-bottom: 10px;
+  overflow: hidden;
+  padding-bottom: 3px;
+
+  &.narrow {
+    margin-bottom: 5px;
+  }
+}
+
+// サイドで使う日本語のみの小見出し
+.s-headline-ja {
+  border-bottom: 1px solid $black-e-color;
+  font-size: 87.5%;
+  line-height: 1.3;
+  margin: 0 10px 8px 0;
+  overflow: hidden;
+  padding-bottom: 3px;
+
+  &:not(:first-child) {
+    margin-top: 20px;
+  }
+}
+
+// Aboutページや運営会社ページで使う、pt-sansフォント
+.en-headline {
+  @include pt-sans;
+  color: $text-black-color;
+  font-size: 200%;
+  padding-top: 30px;
+  text-align: center;
+}
+
+// 記事一覧ページのリスト見出し
+.article-list-headline {
+  border-bottom: 1px solid $black-e-color;
+  line-height: 1.3;
+  padding: 20px 0 6px;
+
+  .headline-26n + & {
+    padding-top: 40px;
+  }
+}

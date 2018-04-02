@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1060">
+<%= yield :head_info %><meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="DIAER[ディアー]">
+<meta property="fb:app_id" content="<%= FACEBOOK_APP_ID %>">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@<%= TWITTER_ID %>">
+<link rel="shortcut icon" type="image/x-icon" href="<%= "#{CDN_IMAGE_ROOT}/diaer/favicon.ico" %>">
+<%= yield :head_info_under %>
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
+<%= stylesheet_link_tag 'application', media: 'all' %>
+<%= csrf_meta_tags %>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.11&appId=<%= FACEBOOK_APP_ID %>";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<header class="header">
+  <div class="container">
+    <%= form_tag('/search', method: :get) do %>
+      <div class="h-search">
+        <%= search_field_tag 'word', '', placeholder: '検索したいキーワードを入力', class: 'h-search__text' %>
+        <%= submit_tag '', class: 'h-search__button' %>
+      </div>
+    <% end %>
+    <% if controller_name == 'top' %>
+      <h1 class="h-logo"><a href="/"><%= image_tag "#{CDN_IMAGE_ROOT}/diaer/logo.svg", alt: 'DIAER[ディアー]', height: 26 %></a></h1>
+    <% else %>
+      <p class="h-logo"><a href="/"><%= image_tag "#{CDN_IMAGE_ROOT}/diaer/logo.svg", alt: 'DIAER[ディアー]', height: 26 %></a></p>
+    <% end %>
+    <% if current_user.nil? %>
+      <ul class="h-links clearfix">
+        <li class="h-links-item"><a href="/about">DIAERとは</a></li>
+        <li class="h-links-item"><a href="/users/new">無料会員登録</a></li>
+        <li class="h-links-item"><a href="/login">ログイン</a></li>
+      </ul>
+    <% else %>
+      <ul id="appear-menu" class="h-links">
+        <% user_image = @current_user.user_image.blank? ? CDN_IMAGE_ROOT + USER_DEFAULT_IMAGE : @current_user.user_image %>
+        <li class="h-links__user-image"><%= image_tag user_image, size: '30x30', alt: @current_user.user_name %></li>
+      </ul>
+      <div id="login-menu" class="login-menu">
+        <ul class="menu-list">
+          <li class="menu-list__item">
+            <a href="/mypage">
+              <%= image_tag user_image, size: '20x20', alt: @current_user.user_name, class: 'menu-list-profile__image' %>
+              <p class="menu-list-profile__text"><%= @current_user.user_name %></p>
+            </a>
+          </li>
+          <li class="menu-list__item"><hr></li>
+          <% notice_count = @current_user.unread_notice_count %>
+          <li class="menu-list__item"><a href="/notices">お知らせ<% unless notice_count.zero? %><span class="menu-badge"><%= notice_count %></span><% end %></a></li>
+          <li class="menu-list__item"><hr></li>
+          <li class="menu-list__item"><a href="/mypage/favorites">お気に入り</a></li>
+          <li class="menu-list__item"><hr></li>
+          <% if @current_user.curator? %>
+            <li class="menu-list__item"><%= link_to '記事作成', '/articles', method: :post %></li>
+            <li class="menu-list__item"><hr></li>
+          <% end %>
+          <% if @current_user.allow_video_create? %>
+            <li class="menu-list__item"><%= link_to '動画作成', '/videos', method: :post %></li>
+            <li class="menu-list__item"><hr></li>
+          <% end %>
+          <li class="menu-list__item"><a href="/mypage/setting">設定</a></li>
+          <li class="menu-list__item"><hr></li>
+          <li class="menu-list__item"><a href="/logout">ログアウト</a></li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</header>
+<%= yield %>
+<footer class="footer">
+  <div class="f-up">
+    <div class="container">
+      <div class="f-logo">
+        <a href="/" class="dblock"><%= image_tag "#{CDN_IMAGE_ROOT}/diaer/logo.svg", alt: 'DIAER', height: 27 %><p class="f-subtitle">幸せからつながる幸せ</p></a>
+      </div>
+      <dl class="f-links">
+        <dt class="f-links__title">カテゴリ一覧</dt>
+        <dd>
+          <ul class="f-links__column">
+            <li class="f-links__item"><a href="/wedding">結婚式場</a></li>
+            <li class="f-links__item"><a href="/photo">ウェディングフォト</a></li>
+            <li class="f-links__item"><a href="/ring">指輪・アクセサリー</a></li>
+            <li class="f-links__item"><a href="/dress">ドレス・タキシード</a></li>
+            <li class="f-links__item"><a href="/hair">ヘアメイク</a></li>
+          </ul>
+          <ul class="f-links__column">
+            <li class="f-links__item"><a href="/beauty">美容・ネイル</a></li>
+            <li class="f-links__item"><a href="/bouquet">ブーケ・装花</a></li>
+            <li class="f-links__item"><a href="/decoration">装飾・演出</a></li>
+            <li class="f-links__item"><a href="/present">引出物・プチギフト</a></li>
+            <li class="f-links__item"><a href="/wisdom">結婚の知恵</a></li>
+            <li class="f-links__item"><a href="/quiz">クイズ</a></li>
+          </ul>
+        </dd>
+      </dl>
+      <dl class="f-links">
+        <dt class="f-links__title">DIAERについて</dt>
+        <dd>
+          <ul class="f-links__column">
+            <li class="f-links__item"><a href="/about">DIAER（ディアー）とは</a></li>
+            <li class="f-links__item"><a href="/articles">記事一覧</a></li>
+            <li class="f-links__item"><a href="/videos/list">動画一覧</a></li>
+            <li class="f-links__item"><a href="/keywords">キーワード一覧</a></li>
+            <li class="f-links__item"><a href="/users">ライター一覧</a></li>
+            <li class="f-links__item"><a href="/accounts/locations">結婚式場一覧</a></li>
+          </ul>
+        </dd>
+      </dl>
+      <dl class="f-links">
+        <dt class="f-links__title">公式SNS</dt>
+        <dd>
+          <ul class="f-links__column">
+            <li class="f-links__item"><a href="https://www.facebook.com/<%= FACEBOOK_ID %>" target="_blank">Facebook</a></li>
+            <li class="f-links__item"><a href="https://twitter.com/<%= TWITTER_ID %>" target="_blank">Twitter</a></li>
+            <li class="f-links__item"><a href="https://www.instagram.com/<%= INSTAGRAM_ID %>/" target="_blank">Instagram</a></li>
+          </ul>
+        </dd>
+      </dl>
+      <dl class="f-links">
+        <dt class="f-links__title">運営について</dt>
+        <dd>
+          <ul class="f-links__column">
+            <li class="f-links__item"><a href="/agreement">利用規約</a></li>
+            <li class="f-links__item"><a href="/privacypolicy">プライバシーポリシー</a></li>
+            <li class="f-links__item"><a href="/question">よくある質問</a></li>
+            <li class="f-links__item"><a href="/contact">お問い合わせ</a></li>
+            <li class="f-links__item"><a href="/company">運営会社</a></li>
+          </ul>
+        </dd>
+      </dl>
+    </div>
+  </div>
+  <div class="f-down">
+    <div class="container">
+      <p class="f-down-title">DIAER | 結婚式の総合情報サイト</p>
+      <ul class="f-sns">
+        <li class="f-sns__item"><div class="fb-like" data-href="https://www.facebook.com/<%= FACEBOOK_ID %>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div></li>
+        <li class="f-sns__item"><a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= SITE_ROOT %>" data-text="DIAER[ディアー]｜幸せからつながる幸せ" data-related="<%= TWITTER_ID %>"></a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
+      </ul>
+      <small class="f-copyright">Copyright &copy;REIVEN, Inc. All Rights Reserved.</small>
+    </div>
+  </div>
+</footer>
+<%= yield :add_contents %>
+<%= javascript_include_tag 'application' %>
+<%= yield :add_scripts %>
+<%= yield :semantic_data %>
+</body>
+</html>

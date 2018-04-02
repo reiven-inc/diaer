@@ -1,0 +1,80 @@
+// 制作者定義のcssファイル(デスクトップ用)
+
+// sanitizeの設定変数
+$root-font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+$root-line-height: 1;
+$root-cursor: auto;
+$selection-color: inherit;
+$selection-background-color: #e2e2e2;
+
+// リセット
+@import 'vendors/sanitize';
+
+// 変数
+@import 'desktop/variables';
+
+// mixin
+@import 'desktop/mixins';
+
+// 共通スタイル
+@import 'desktop/common';
+
+// ヘッダーとフッター
+@import 'desktop/header_footer';
+
+// パンくずリスト
+@import 'desktop/breadcrumb';
+
+// トップページ関連(トップタブ、アイキャッチ記事等)
+@import 'desktop/top';
+
+// カラムレイアウト関連
+@import 'desktop/column_layout';
+
+// カテゴリーのナビゲーションバー
+@import 'desktop/category_navi';
+
+// 見出し関連
+@import 'desktop/headlines';
+
+// リスト関連
+@import 'desktop/list';
+
+// キーワード関連
+@import 'desktop/keyword';
+
+// ページの上部にあるメインのイメージや情報部分
+@import 'desktop/page_top';
+
+// 記事関連
+@import 'desktop/articles';
+
+// クイズ関連
+@import 'desktop/questions';
+
+// 動画関連
+@import 'desktop/videos';
+
+// お気に入りボタン
+@import 'desktop/favorite';
+
+// タブ関連
+@import 'desktop/tabs';
+
+// フォーム関連(共通、設定ページ)
+@import 'desktop/form';
+
+// モーダルウィンドウ関連
+@import 'desktop/modal';
+
+// 静的情報ページ関連(staticコントローラーのページ)
+@import 'desktop/static';
+
+// お知らせ
+@import 'desktop/notices';
+
+// アカウント
+@import 'desktop/accounts';
+
+// jQuery UIのスタイル調整
+@import 'desktop/jquery_ui_custom';

@@ -1,0 +1,94 @@
+// お気に入りボタン
+@charset "UTF-8";
+
+.favorite-button-circle {
+  bottom: -29px;
+  position: absolute;
+  right: 15px;
+
+  a {
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 1px 2px $transparent-black-25-color;
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    width: 60px;
+  }
+}
+
+.favorite-button-circle_add {
+  a {
+    background-color: $white-color;
+  }
+}
+
+.favorite-button-circle_remove {
+  a {
+    background-color: $theme-color;
+  }
+}
+
+.favorite-button-circle-icon {
+  background-position: center;
+  background-size: 23px auto;
+  height: 21px;
+  width: 23px;
+}
+
+.favorite-button-square {
+  width: 158px;
+
+  a {
+    border-radius: 3px;
+    display: flex;
+    font-size: 93.8%;
+    font-weight: bold;
+    justify-content: center;
+    padding: 11px 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  // 動画ページ上部で使用
+  .article-share_size_m & {
+    width: 150px;
+
+    a {
+      font-size: 68.8%;
+      padding: 7px;
+    }
+  }
+}
+
+.favorite-button-square_add {
+  a {
+    background-color: $white-color;
+    border: 1px solid $black-c0-color;
+    color: $black-c0-color;
+  }
+}
+
+.favorite-button-square_remove {
+  a {
+    background-color: $theme-color;
+    border: 1px solid $theme-color;
+    color: $white-color;
+  }
+}
+
+.favorite-button-square-icon {
+  background-position: center;
+  background-size: 15px auto;
+  height: 15px;
+  margin-right: 6px;
+  width: 15px;
+
+  // 動画ページ上部で使用
+  .article-share_size_m & {
+    background-size: 11px auto;
+    height: 11px;
+    margin-right: 7px;
+    width: 11px;
+  }
+}

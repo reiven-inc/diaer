@@ -1,0 +1,92 @@
+<% content_for :head_info do %>
+<% title = "記事一覧#{@articles.first_page? ? '' : "(#{@articles.current_page}ページ目)"}｜DIAER [ディアー]"
+   description = "このページには、結婚式に関するDIAERの記事が集まっています。今話題になっているキーワードから、気になる記事をみつけよう！#{@articles.first_page? ? '' : "(#{@articles.current_page}ページ目)"}" %>
+<title><%= title %></title>
+<meta name="description" content="<%= description %>">
+<meta property="og:title" content="<%= title %>">
+<meta property="og:image" content="<%= "#{CDN_IMAGE_ROOT}/diaer/ogp.png" %>">
+<meta property="og:type" content="article">
+<meta property="og:url" content="<%= request.url %>">
+<meta property="og:description" content="<%= description %>">
+<% end %>
+<% content_for :head_info_under do %>
+<% canonical_url = "#{SITE_ROOT}/articles" %>
+<% if @articles.first_page? %><link rel="canonical" href="<%= canonical_url %>"><% end %>
+<% unless @articles.first_page? %><link rel="prev" href="<%= @articles.current_page == 2 ? canonical_url : "#{SITE_ROOT}/articles?page=#{@articles.current_page - 1}" %>"><% end %>
+<% unless @articles.last_page? %><link rel="next" href="<%= "#{SITE_ROOT}/articles?page=#{@articles.current_page + 1}" %>"><% end %>
+<% end %>
+<% content_for :semantic_data do %>
+<script type="application/ld+json">
+{
+"@context" : "http://schema.org",
+"@graph" :
+[
+{
+  "@type" : "WebSite",
+  "name" : "DIAER",
+  "alternateName" : "ディアー",
+  "url" : "<%= SITE_ROOT %>"
+},
+{
+  "@type": "BreadcrumbList",
+  "itemListElement":
+  [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item":
+      {
+        "@id": "<%= SITE_ROOT %>",
+        "name": "DIAERトップ"
+      }
+    }<% unless @articles.first_page? %>,
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item":
+      {
+        "@id": "<%= "#{SITE_ROOT}/articles" %>",
+        "name": "記事一覧"
+      }
+    }
+    <% end %>
+  ]
+}
+]
+}
+</script>
+<% end %>
+<main class="main-content">
+  <div class="h-breadcrumb">
+    <ol class="breadcrumb-list container">
+      <li class="breadcrumb-list__item"><a href="/">DIAERトップ</a></li>
+      <% if @articles.first_page? %>
+      <li class="breadcrumb-list__item">記事一覧</li>
+      <% else %>
+      <li class="breadcrumb-list__item"><a href="/articles">記事一覧</a></li>
+      <li class="breadcrumb-list__item"><%= @articles.current_page %>ページ目</li>
+      <% end %>
+    </ol>
+  </div>
+  <div class="container">
+    <div class="column-container">
+      <h1 class="headline-26n">記事一覧（<%= @articles.current_page %>ページ目）</h1>
+      <% if @articles.first_page? %>
+        <p class="headline-26n__explanation">このページには、結婚式に関するDIAERの記事が集まっています。<br>今話題になっているキーワードから、気になる記事をみつけよう！</p>
+      <% end %>
+      <h2 class="article-list-headline">全記事一覧（<%= @articles.current_page %>ページ目）</h2>
+      <%= render 'mainarticle', articles: @articles, title_length: MAX_DISPLAY_TITLE_AT_1COLUMN, description_length: MAX_DISPLAY_DESCRIPTION_AT_1COLUMN %>
+    </div>
+    <div class="f-breadcrumb">
+      <ol class="breadcrumb-list container">
+        <li class="breadcrumb-list__item"><a href="/">DIAERトップ</a></li>
+        <% if @articles.first_page? %>
+        <li class="breadcrumb-list__item">記事一覧</li>
+        <% else %>
+        <li class="breadcrumb-list__item"><a href="/articles">記事一覧</a></li>
+        <li class="breadcrumb-list__item"><%= @articles.current_page %>ページ目</li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+</main>

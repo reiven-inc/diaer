@@ -1,0 +1,111 @@
+<% content_for :head_info do %>
+<% title = "ライター一覧｜DIAER [ディアー]"
+   description = "このページでは、DIAERで知識・経験が豊富なライターを紹介しています。" %>
+<title><%= title %></title>
+<meta name="description" content="<%= description %>">
+<meta property="og:title" content="<%= title %>">
+<meta property="og:image" content="<%= "#{CDN_IMAGE_ROOT}/diaer/ogp.png" %>">
+<meta property="og:type" content="article">
+<meta property="og:url" content="<%= request.url %>">
+<meta property="og:description" content="<%= description %>">
+<% end %>
+<% content_for :head_info_under do %>
+<% if @curators.first_page? %><link rel="canonical" href="<%= "#{SITE_ROOT}/users" %>"><% end %>
+<% unless @curators.first_page? %><link rel="prev" href="<%= @curators.current_page == 2 ? "#{SITE_ROOT}/users" : "#{SITE_ROOT}/users?page=#{@curators.current_page - 1}" %>"><% end %>
+<% unless @curators.last_page? %><link rel="next" href="<%= "#{SITE_ROOT}/users?page=#{@curators.current_page + 1}" %>"><% end %>
+<% end %>
+<% content_for :semantic_data do %>
+<script type="application/ld+json">
+{
+"@context" : "http://schema.org",
+"@graph" :
+[
+{
+  "@type" : "WebSite",
+  "name" : "DIAER",
+  "alternateName" : "ディアー",
+  "url" : "<%= SITE_ROOT %>"
+},
+{
+  "@type": "BreadcrumbList",
+  "itemListElement":
+  [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item":
+      {
+        "@id": "<%= SITE_ROOT %>",
+        "name": "DIAERトップ"
+      }
+    }<% unless @curators.first_page? %>,
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item":
+      {
+        "@id": "<%= "#{SITE_ROOT}/users" %>",
+        "name": "ライター一覧"
+      }
+    }
+    <% end %>
+  ]
+}
+]
+}
+</script>
+<% end %>
+<main class="main-content">
+  <div class="h-breadcrumb">
+    <ol class="breadcrumb-list container">
+      <li class="breadcrumb-list__item"><a href="/">DIAERトップ</a></li>
+      <% if @curators.first_page? %>
+      <li class="breadcrumb-list__item">ライター一覧</li>
+      <% else %>
+      <li class="breadcrumb-list__item"><a href="/users">ライター一覧</a></li>
+      <li class="breadcrumb-list__item"><%= @curators.current_page %>ページ目</li>
+      <% end %>
+    </ol>
+  </div>
+  <div class="container">
+    <div class="column-container">
+      <h1 class="headline-26n">ライター一覧</h1>
+      <p class="headline-26n__explanation">このページでは、DIAERで知識・経験が豊富なライターを紹介しています。</p>
+      <div class="curator-group group">
+        <ul class="group__list">
+          <% @curators.each do |curator| %>
+              <% curator_link = "/users/#{curator.id}"
+                 curator_image = curator.user_image %>
+              <li class="group__item item">
+                <%= link_to curator_link do %>
+                  <div class="item__img">
+                  <%if curator.user_image.nil?%>
+                    <%= image_tag(curator_image, :size => "75x75",:alt => "未設定のプロフィール写真",:class =>"cover-img") %>
+                  <%else%>
+                    <%= image_tag(curator_image, :size => "75x75",:alt => curator.user_name,:class =>"cover-img") %>
+                  <%end%>
+                  </div>
+                  <div class="item__text text">
+                    <h2 class="text__name"><%= curator.user_name %></h2>
+                    <p class="text__explanation"><%= truncate(curator.user_profile, length: 41) %></p>
+                  </div>
+                <%end%>
+              </li>
+          <%end%>
+        </ul>
+      </div>
+      <%= paginate(@curators) %>
+    </div>
+    <div class="f-breadcrumb">
+      <ol class="breadcrumb-list container">
+        <li class="breadcrumb-list__item"><a href="/">DIAERトップ</a></li>
+        <% if @curators.first_page? %>
+        <li class="breadcrumb-list__item">ライター一覧</li>
+        <% else %>
+        <li class="breadcrumb-list__item"><a href="/users">ライター一覧</a></li>
+        <li class="breadcrumb-list__item"><%= @curators.current_page %>ページ目</li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+</main>

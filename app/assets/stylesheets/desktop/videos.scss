@@ -1,0 +1,70 @@
+// 動画関連
+@charset "UTF-8";
+
+// トップページ
+.top-video-image {
+  @include img-cover-wrap($top-image-width, $top-image-height);
+  background-color: $blue-gray-color;
+  background-position: center;
+  background-size: cover;
+
+  &::before {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAApVBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+4/eNVAAAANnRSTlMAA/Qx5acI0kYaQM6HTPqDZBEMyS23Ie+valbpuo5vHvjetNe9KX1JJttensKVj4t2FaCQNtbOEGTEAAAEdklEQVR42sTY6XaiQBAF4NvsIC6AkahxifuSxGSi9f6PNnOGQwPCCE1D5vuZE0kht6rooBbvenL1jamFCpESauZGd09XDz/Cnny8TanQ9O1jYqNNhjVbU4n1zDLQCrY/h1RJeN4zNG3kaiRAc0dokrMiYSsHTekGVEvQRROsgGoLLMg6FH75PVPvD6zhwvMB31sMrUFfN3uFD+IAGYa7zHe7PlYZCjB1rOcnxNI1JLJ3pDud3ZXhAXbddejO0UE9xoyytP4WFWz7GmXNDNSwNSnjpctQEeu+UIa5hbCJQmm6CiGqTmnKBGLYhdKehxA2fKa0C4MAP/PhjoNanE7mJnxU9hVQQpkz1MTmCiWCL1Rk39LZW0DCIp3Gm41KRq/ELeeQNF8S9zpCBfYx9QkV0tTU/RxtlPq6EffkoQHeE3Hr0hwYAXHvDI1g78QFBh5iqf77RGM+U93I8MiMYr0BGnTqUWyGBybJ3z8BLVUwebB/FIoN0LABxZQt/sEwBZ6/RA5MozQA72hB0gsfKOQk/c/QApbMAwcFjCOffx5a4fGZeDSQ5/L5r6IlKt8LLnIOvE/maM2cd/kB91Z8/6JFfDuvcMfiXbpAixZ80ljICsQegPxDCJDR5e9/DK1i/D2xi7RO0qEtc/itFv70Ga175vda1AJbtG5Y0Agjfv7BD+BnplF+CKooYT/1pjsDUtTcOGQaRTYos6E/tAFrZBpp8WX2SWeUiTe6BQm85/eInJOKyiQbe4i6km/8jL+MkCJ9lKLE2UZdfYqERnYNbIUKIGXno55DdiHM4gcLkQKk0tjJvKKvKbITKCBm7lHHLj6pAYCdDIFylPMylBkFduowokGkAMk0TlOHlG+RMUxFlL5fdxx/p15FxsIFJKaiaRxT5A2AIhABUEwqjUkIlNQmNGoVkNiIpJH14o3IB/MrhAqQTaPJ1884Hu5iBcimUefJu/A8VkElpmMmtg4uqVKqoFK3rtC/C3Rs+F6ogirYqChnxb8MU6QLQZX8siv3oQmN90MVVM2yNI0LvgBCinhyBeRnIx7yKBLyQejLFZDn4hE/7lx+STRdgFLtSv+/gN/dm9EKgkAQRUeSQBarB30QigiJ9kGEDPz/TwsfdAkhxZU9o/MFS6k7c+cc/C/AH8L+NbxDryH/IcI/xf1ldIEuo+E6PlPXcdEfhWpIUjeYIS3Z0JSeIqYp5dtyfjDBRzNkOI3dcOrG84wYzzUEFENEY6CIxoVUNnxIpSOmk4YKKhstUe1womvosFpLXM8vLPCVDb+0wtd2/OJSTOjVrdG2vMbX96EBhqc+hIOHWHCMR6QOBTJ9tKJcOMzG43wit8kT+AONupFOHGoVeZcBsF4MbH4k4dHuYjba7SopW1e5H9yet67KZCt4Py848IoHL7msrflki0SneiQ6WZlRdiQ61ccVVa/DxE8/pXr5y27xP9kt9pTdxmVzP90vt1sXHrtKTbuoTCoiu5BeFWi/XUWvZq743IzF5z2o3xrk91/9v3L6f7Vc//8CLOBi+yyXRi4AAAAASUVORK5CYII=);
+    background-size: 64px 64px;
+    content: '';
+    display: block;
+    height: 64px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    z-index: 1;
+  }
+}
+
+// 動画ページ
+.video-main-file {
+  height: 560px;
+  width: 560px;
+}
+
+.video-article-title {
+  color: $text-black-color;
+  font-size: 162.5%;
+  line-height: 1.3;
+  margin-top: 40px;
+}
+
+.video-article-explanation {
+  color: $text-black-color;
+  line-height: 1.3;
+  margin-top: 20px;
+}
+
+// 作成ページ
+.loading-modal {
+  background: $transparent-black-7-color;
+  border: 1px solid $black-e-color;
+  border-radius: 4px;
+  color: $white-color;
+  font-size: 87.5%;
+  left: 50%;
+  line-height: 1.3;
+  padding: 22px 14px;
+  position: fixed;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 178px;
+  z-index: 10;
+}
+
+.loading-icon {
+  background-image: url(#{$img-root}diaer/upload_spinner.gif);
+  background-size: 60px 60px;
+  display: block;
+  height: 60px;
+  margin: 0 auto 10px;
+  width: 60px;
+}

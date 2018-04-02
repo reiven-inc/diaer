@@ -1,0 +1,174 @@
+<% content_for :head_info do %>
+<% title = @pickups.first_page? ? 'DIAER [ディアー]｜結婚式の総合情報サイト' : "ピックアップ(#{@pickups.current_page}ページ目)｜DIAER [ディアー]"
+   description = @pickups.first_page? ? 'DIAER（ディアー）は、理想の結婚式を見つけるための「結婚式の総合情報サイト」です。結婚式場・ドレス・タキシード・ネイル・ブーケ・ウェディングアイテム・会場装飾・海外のトレンド・プロポーズ・ハネムーン・結婚の知識など、ウェディングに関する情報をお届けします！' : "DIAER[ディアー]のピックアップした記事一覧のページ(#{@pickups.current_page}ページ目)です。" %>
+<title><%= title %></title>
+<meta name="description" content="<%= description %>">
+<meta property="og:title" content="<%= title %>">
+<meta property="og:image" content="<%= "#{CDN_IMAGE_ROOT}/diaer/ogp.png" %>">
+<meta property="og:type" content="website">
+<meta property="og:url" content="<%= request.url %>">
+<meta property="og:description" content="<%= description %>">
+<% end %>
+<% content_for :head_info_under do %>
+<% if @pickups.first_page? %><link rel="canonical" href="<%= SITE_ROOT %>"><% end %>
+<% unless @pickups.first_page? %><link rel="prev" href="<%= @pickups.current_page == 2 ? SITE_ROOT : "#{SITE_ROOT}/?page=#{@pickups.current_page - 1}" %>"><% end %>
+<% unless @pickups.last_page? %><link rel="next" href="<%= "#{SITE_ROOT}/?page=#{@pickups.current_page + 1}" %>"><% end %>
+<%= auto_discovery_link_tag(:atom, "/feed.atom", title: "DIAER [ディアー]｜結婚式の総合情報サイト") %>
+<% end %>
+<% content_for :semantic_data do %>
+<script type="application/ld+json">
+[
+{
+  "@context" : "http://schema.org",
+  "@type" : "WebSite",
+  "name" : "DIAER",
+  "alternateName" : "ディアー",
+  "url" : "<%= SITE_ROOT %>"
+}<% unless @pickups.first_page? %>,
+{
+  "@context" : "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement":
+  [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item":
+      {
+        "@id": "<%= SITE_ROOT %>",
+        "name": "DIAERトップ"
+      }
+    }
+  ]
+}
+<% end %>
+]
+</script>
+<% end %>
+
+<main class="main-content">
+  <div class="top-tab">
+    <div class="container">
+      <ul class="top-tab-list">
+        <li class="top-tab-item active"><a href="/">記事</a></li>
+        <li class="top-tab-item"><a href="/images">写真</a></li>
+        <li class="top-tab-item"><a href="/videos">動画</a></li>
+      </ul>
+    </div>
+  </div>
+  <% if notice %>
+    <div class="run-message"><%= notice %></div>
+  <% end %>
+  <% if @pickups.first_page? %>
+    <div class="top-area">
+      <ul class="container clearfix">
+        <% @main.each do |m| %>
+          <% if m.user
+               author = m.user
+               author_name = author.user_name
+               author_link = "/users/#{author.id}"
+               author_image = author.user_image
+             else
+               author_name = "削除されたユーザー"
+               author_link = "#"
+               author_image = CDN_IMAGE_ROOT + USER_DEFAULT_IMAGE
+             end %>
+          <li class="top-article">
+            <a href="<%= "/#{m.id}" %>" class="dblock">
+              <% if m.quiz? %><span class="article-label article-label-large">QUIZ</span><% end %>
+              <div class="top-article__image" style="background-image: url(<%= m.output_image_url %>);"></div>
+              <h2 class="top-article__title"><%= truncate(m.article_title, length: 39) %></h2>
+            </a>
+            <ul class="top-article__info info-item">
+              <li class="info-item__list">
+                <a href="<%= author_link %>">
+                  <img src="<%= author_image %>" alt="<%= author_name %>" width="20" height="20" class="info-item__author-image">
+                  <span class="info-item__author-name"><%= author_name %></span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="container">
+    <div class="column-container three-columns">
+      <div id="left-fix-parent" class="column-main">
+        <div class="content-nav">
+          <%= render 'categorylist' %>
+        </div>
+        <div id="left-fix-compare" class="content-main">
+          <div class="c-headline">
+            <span lang="en" class="c-headline__title-english">PICKUP</span>
+            <h2 class="c-headline__title">ピックアップ</h2>
+            <% if @pickups.first_page? %><p class="c-headline__supplement">今日のピックアップ記事</p><% end %>
+          </div>
+          <%# paddingメソッドにより@pickupsのcurrent_pageが下がってしまうため、この時点でcurrent_pageの値を確保 %>
+          <% current_page = @pickups.current_page %>
+          <%= render 'mainarticle', articles: @pickups.padding(3) %>
+        </div>
+      </div>
+      <div class="column-side">
+        <div class="content-side">
+          <div class="ad-area">
+            <%= render 'ad', type: 'pc_side_up' %>
+          </div>
+          <div class="pl10">
+            <div class="c-headline mt20">
+              <span lang="en" class="c-headline__title-english">RANKING</span>
+              <h2 class="c-headline__title">昨日のアクセスランキング</h2>
+            </div>
+            <%= render 'ranking', rankings: @rankings.limit(5) %>
+            <div class="c-headline">
+              <span lang="en" class="c-headline__title-english">AND MORE</span>
+              <h2 class="c-headline__title">編集部のおすすめ記事</h2>
+            </div>
+            <%= render 'sidearticle', articles: @andmores %>
+            <div class="c-headline">
+              <span lang="en" class="c-headline__title-english">NEW</span>
+              <h2 class="c-headline__title">新着記事</h2>
+            </div>
+            <%= render 'sidearticle', articles: @news, addition: 'new_article_list' %>
+            <div class="c-headline">
+              <span lang="en" class="c-headline__title-english">KEYWORD</span>
+              <h2 class="c-headline__title">いまDIAERで話題のキーワード</h2>
+            </div>
+            <%= render 'keywordlist', keywords: @keyword_pickups %>
+          </div>
+          <div class="fb-page mt20" data-href="https://www.facebook.com/<%= FACEBOOK_ID %>" data-width="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+            <blockquote cite="https://www.facebook.com/<%= FACEBOOK_ID %>" class="fb-xfbml-parse-ignore"></blockquote>
+          </div>
+          <ul class="pl10 sns-follow-area">
+            <li class="sns-follow-button sns-follow-button_twitter">
+              <a href="https://twitter.com/<%= TWITTER_ID %>" target="_blank">Twitterをフォロー</a>
+            </li>
+            <li class="sns-follow-button sns-follow-button_instagram">
+              <a href="https://www.instagram.com/<%= INSTAGRAM_ID %>/" target="_blank">Instagramをフォロー</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="c-headline c-headline_under-about">
+      <span lang="en" class="c-headline__title-english">ABOUT</span>
+      <h2 class="c-headline__title">DIAERとは</h2>
+    </div>
+    <div class="under-about">
+      <p class="under-about__paragraph">誰かが紹介した「幸せ（記事）」をみて、次の誰かの「幸せ（結婚式）」につながる。たくさんの「幸せ」が集まる場所をつくりたい。そんな想いから"DIAER"は誕生しました。</p>
+      <p class="under-about__paragraph">新郎新婦の理想を叶える結婚式場・プロデュース会社・ウェディングプランナー、今行くべきおすすめのブライダルフェア、人気ブランドのウェディングドレス・タキシード・和装、
+花嫁を輝かせるウェディングシューズ、なりたいイメージが見つかるヘアスタイル、おふたりの大切な婚約指輪・結婚指輪、最旬トレンドのブーケやウェディングアイテム、
+テーマに合わせたテーブルコーディネート、結婚式に使える遊び心あふれるオシャレなアイディア、海外で流行中のウェディング情報、彼女を喜ばせるサプライズプロポーズ、
+おすすめのハネムーン（新婚旅行）スポット、ゲストのお呼ばれドレス・スーツ・ヘアスタイル、結婚に関する必要な知識など、結婚が決まったおふたりをサポート！
+おふたりにぴったりな理想の結婚式を見つかる情報を盛りだくさんにお届けする「結婚式の総合情報サイト」です。</p>
+    </div>
+    <% unless current_page == 1 %>
+      <div class="f-breadcrumb">
+        <ol class="breadcrumb-list container">
+          <li class="breadcrumb-list__item"><a href="/">DIAERトップ</a></li>
+          <li class="breadcrumb-list__item"><%= current_page %>ページ目</li>
+        </ol>
+      </div>
+    <% end %>
+  </div>
+</main>

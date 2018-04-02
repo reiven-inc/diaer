@@ -1,0 +1,137 @@
+// モーダルウィンドウ関連CSS
+@charset "UTF-8";
+
+.modal-overlay {
+  background-color: $transparent-black-5-color;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.modal-window {
+  background-color: $white-color;
+  box-shadow: 0 5px 15px $transparent-black-5-color;
+  height: 90%;
+  left: 50%;
+  max-height: 640px;
+  overflow: hidden;
+  position: fixed;
+  top: 30px;
+  transform: translateX(-50%);
+  width: 800px;
+}
+
+.modal-window__navi {
+  border-right: 1px solid $black-e4-color;
+  float: left;
+  height: 100%;
+  overflow: auto;
+  width: 151px;
+}
+
+.modal-title {
+  color: $black-5-color;
+  padding-bottom: 20px;
+}
+
+.navi-list__item_link {
+  padding-left: 16px;
+  position: relative;
+
+  &:hover,
+  &.active {
+    background-color: $black-e4-color;
+  }
+
+  a {
+    border-bottom: 1px solid $black-e4-color;
+    color: $text-black-color;
+    display: block;
+    font-size: 87.5%;
+    height: 51px;
+    padding: 18px 0;
+
+    img {
+      position: absolute;
+      top: 0;
+    }
+  }
+}
+
+.navi-list__item_category {
+  border-bottom: 1px solid $black-e4-color;
+  color: $text-black-color;
+  padding: 17px 0 17px 16px;
+}
+
+.modal-window__content {
+  float: left;
+  height: 100%;
+  overflow: auto;
+  padding: 0 48px 0 20px;
+  position: relative;
+  width: 649px;
+
+  .content {
+    padding-top: 34px;
+  }
+}
+
+.modal-window__content_wide {
+  padding-right: 20px;
+}
+
+.modal-window__close {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAElBMVEUAAABVVVVVVVVVVVVVVVVVVVWqA4oqAAAABXRSTlMAyg/DTqF0p/QAAAB3SURBVCjPZdJBCoAgEIXhITqB0L7oBkH7Nh0gyvtfpeA9eMEvpKZfqTPWuNWvrEed15z3YXpq7y0DS7+/R0SgN1UqmlQd4CbAbUA6mggNcDfAxCDEIMQgxCAkIAP8BD/lstgYt47D8fgIEEOIICMNSBRSiWTjOrxQoijHLVRFTAAAAABJRU5ErkJggg==);
+  background-size: 16px 16px;
+  cursor: pointer;
+  display: block;
+  height: 16px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 16px;
+}
+
+// モーダルウィンドウのコンテンツ領域の幅
+$modal-content-width: 609px;
+// 1列に何個画像を並べるか
+$modal-images-per-row: 4;
+// 画像間の間隔
+$modal-images-inverval: 12px;
+
+// 画像リスト表示エリア
+.modal-image-list-area {
+  height: 100%;
+  overflow-y: scroll;
+  padding-top: 68px;
+}
+
+// 画像リスト
+.modal-image-list {
+  list-style: none;
+  overflow: hidden;
+  padding-left: 0;
+  width: $modal-content-width + $modal-images-inverval;
+}
+
+.modal-image-list-item {
+  float: left;
+  width: 100% / $modal-images-per-row;
+
+  a {
+    display: block;
+    margin: 0 $modal-images-inverval $modal-images-inverval 0;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+}
+
+.modal-image-list-image {
+  width: 100%;
+}

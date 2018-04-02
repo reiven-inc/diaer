@@ -1,0 +1,114 @@
+// キーワード関連
+@charset "UTF-8";
+
+// キーワードタグアイコン
+.keyword-tag {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAUCAMAAACknt2MAAAAclBMVEUAAAD/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZnzV4uiAAAAJXRSTlMABfsLvaLx6uLbzsmFczcjGxD3skUUwpNSPy3Tt7BiJ5WSa2NcHB3L/wAAAMNJREFUKM9t0NnWgiAUhuEPcERwSE1t/Ie++7/FllhQ1HPAyctibTaC1ugFwzmjUy6hzFlei5Re7stFFgd1orNz57NYlk23364vaHRIhsd21HQsgNqnidXYltz8vSSRMlFNwYfiCvf0Wnr26pAzKCRJCaiEqagzxjS6ihOGHT/8I6FB86UkAlIDty9FAXtaXGVcegGgPdJgjlq6Fqxz/ERzTNh8Tm/gifPbn20o26a6x6bkBe9+n/uVM2I2q9R4kuUA7w5kWSk6ZxY+uAAAAABJRU5ErkJggg==) no-repeat 3px 50% $white-color;
+  background-size: 13px 10px;
+  border: 1px solid $black-e7-color;
+  border-radius: 2px;
+  color: $text-black-color;
+  font-size: 75%;
+  padding: 6px 5px 7px 19px;
+}
+
+.keyword-tag_no-tag {
+  background: none;
+  padding-left: 5px;
+}
+
+// キーワードタグの集まり
+.keyword-area {
+  margin-top: 6px;
+
+  .keyword-area__list {
+    overflow: hidden;
+  }
+
+  .list__tag {
+    float: left;
+    margin: 0 6px 6px 0;
+
+    a {
+      display: block;
+
+      &:hover {
+        background-color: $black-e7-color;
+      }
+    }
+  }
+}
+
+// キーワードトップページ
+.keyword-content {
+  margin: 20px 0 40px;
+}
+
+// キーワード一覧のリスト
+.relation-keyword-list {
+  margin-top: 24px;
+  min-height: 80px;
+  overflow: hidden;
+
+  .relation-keyword-list__item {
+    float: left;
+    overflow: hidden;
+    padding: 0 3px 18px 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 20%;
+
+    a {
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAUCAMAAACknt2MAAAAclBMVEUAAAD/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZnzV4uiAAAAJXRSTlMABfsLvaLx6uLbzsmFczcjGxD3skUUwpNSPy3Tt7BiJ5WSa2NcHB3L/wAAAMNJREFUKM9t0NnWgiAUhuEPcERwSE1t/Ie++7/FllhQ1HPAyctibTaC1ugFwzmjUy6hzFlei5Re7stFFgd1orNz57NYlk23364vaHRIhsd21HQsgNqnidXYltz8vSSRMlFNwYfiCvf0Wnr26pAzKCRJCaiEqagzxjS6ihOGHT/8I6FB86UkAlIDty9FAXtaXGVcegGgPdJgjlq6Fqxz/ERzTNh8Tm/gifPbn20o26a6x6bkBe9+n/uVM2I2q9R4kuUA7w5kWSk6ZxY+uAAAAABJRU5ErkJggg==) no-repeat 0 50%;
+      background-size: 13px 10px;
+      color: $black-6-color;
+      font-size: 81.3%;
+      line-height: 1.3;
+      padding-left: 18px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// キーワード用語
+.dictionary-area {
+  margin-bottom: 38px;
+}
+
+.dictionary-list {
+  border-bottom: 1px dotted $black-e7-color;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+}
+
+.dictionary-term {
+  background-color: $theme-color;
+  color: $white-color;
+  font-size: 81.3%;
+  margin-bottom: 16px;
+  padding: 7px 0;
+  text-align: center;
+  width: 86px;
+}
+
+.dictionary-data {
+  color: $text-black-color;
+}
+
+.dictionary-data-name {
+  font-size: 112.5%;
+  font-weight: bold;
+}
+
+.dictionary-data-kana {
+  font-size: 87.5%;
+  font-weight: bold;
+}
+
+.dictionary-data-sentence {
+  font-size: 87.5%;
+  line-height: 1.6;
+}

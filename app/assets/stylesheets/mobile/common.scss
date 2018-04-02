@@ -1,0 +1,429 @@
+// ヘッダー、フッターなどの共通部分、共通スタイル
+@charset "UTF-8";
+
+// デフォルトスタイル
+li {
+  list-style: none;
+}
+
+// 共通ラッパー
+.view-wrapper {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.content-wrapper {
+  background-color: $black-f7-color;
+  box-shadow: 0 0 7px $transparent-black-25-color;
+  left: 0;
+  overflow: hidden;
+  padding-top: 45px;
+  position: relative;
+  top: 0;
+  transition: left .2s ease-out;
+  width: 100%;
+  z-index: 5;
+}
+
+// ヘッダー
+.header {
+  background-color: $header-color;
+  border-bottom: 1px solid $black-e-color;
+  height: 45px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: left .2s ease-out;
+  width: 100%;
+  z-index: 10;
+}
+
+.slide-left {
+  left: 285px !important; // JS用, translate3dで動かしたかったがSafariでちらつくためleft
+}
+
+.h-button {
+  background-position: center;
+  background-size: 17px 17px;
+  display: block;
+  height: 45px;
+  position: absolute;
+  top: 0;
+  width: 51px;
+}
+
+.h-button_menu,
+.h-button_back {
+  left: 0;
+}
+
+.h-button_search {
+  right: 0;
+}
+
+.h-logo {
+  margin: auto;
+  padding-top: 13px;
+  width: 61px;
+
+  a {
+    display: block;
+    text-align: center;
+  }
+
+  img {
+    height: 15px;
+  }
+}
+
+// フッター
+.footer {
+  background-color: $black-eb-color;
+  padding-top: 18px;
+  text-align: center;
+}
+
+.f-logo__image {
+  width: 60px;
+}
+
+.f-logo__text {
+  color: $black-9-color;
+  font-size: 56.3%;
+  padding-top: 6px;
+}
+
+.f-sns-area__list {
+  display: flex;
+  justify-content: space-between;
+  margin: 19px auto 17px;
+  width: 159px;
+}
+
+.f-sns-area__button {
+  img {
+    border-radius: 50%;
+    width: 37px;
+  }
+}
+
+.f-links {
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.f-links__item {
+  &:not(:last-of-type) {
+    border-right: 1px solid $black-c2-color;
+  }
+
+  a {
+    color: $black-9-color;
+    display: block;
+    font-size: 62.5%;
+    padding: 2px 7px;
+  }
+}
+
+.f-copyright {
+  color: $black-6-color;
+  display: block;
+  font-size: 62.5%;
+  padding: 25px 0 5px;
+}
+
+// サイドメニュー
+.sidebar {
+  background-color: $white-color;
+  height: 100%;
+  left: 0;
+  min-height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  width: 285px;
+  z-index: 0;
+
+  &.is-show {
+    display: block;
+    opacity: 1;
+  }
+
+  &.is-hide {
+    display: none;
+    opacity: 0;
+  }
+}
+
+.m-main-list__item {
+  border-bottom: 1px solid $black-e-color;
+
+  a {
+    color: $text-black-color;
+    display: block;
+    font-size: 87.5%;
+    line-height: 54px;
+    padding-left: 11px;
+    position: relative;
+  }
+}
+
+.m-main-list__item_indent {
+  a {
+    padding-left: 58px;
+  }
+}
+
+.m-badge {
+  background-color: $red-em-color;
+  border-radius: 10px;
+  color: $white-color;
+  display: inline-block;
+  font-size: 68.8%;
+  line-height: 1;
+  min-width: 10px;
+  padding: 4px 5px;
+  position: absolute;
+  right: 15px;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+.m-headline {
+  background-color: $black-e-color;
+  color: $text-black-color;
+  font-size: 87.5%;
+  line-height: 30px;
+  padding-left: 11px;
+}
+
+.m-category-list__item {
+  a {
+    color: $black-color;
+    display: block;
+    font-size: 81.3%;
+    line-height: 50px;
+    padding-left: 39px;
+    position: relative;
+  }
+}
+
+.m-user {
+  color: $text-black-color;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &::after {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAOCAMAAAAc7xz/AAAAQlBMVEUAAACysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrIy3IF4AAAAFXRSTlMA9Qm7o4luU005GOzr4N/PzoFlKCa+5bO8AAAAcUlEQVQY022PWQ7DIBQDDYQlZF/m/ldt1CJBk8yXNXp6luVM0o1knAym/7f9pRRhOFp7DBClAFOuNk8QdOFhsSrYBfwvduBssQ46tbm9KH4FX/6ttumZIXzb56yGc4QYYTyfG+qySgJIerDDrhe2reYPmrEFmTI8k0UAAAAASUVORK5CYII=);
+    background-size: 11px 7px;
+    content: '';
+    display: block;
+    height: 7px;
+    position: absolute;
+    right: 14px;
+    top: 24px;
+    width: 11px;
+  }
+
+  &.opened {
+    &::after {
+      transform: rotate(180deg);
+    }
+  }
+
+  img {
+    border-radius: 50%;
+    height: 37px;
+    margin-right: 10px;
+    width: 37px;
+  }
+}
+
+// ページ上部に表示するメッセージ
+.run-message {
+  background-color: $black-fa-color;
+  color: $black-5-color;
+  font-size: 87.5%;
+  font-weight: bold;
+  padding: 15px 0;
+  text-align: center;
+
+  + .main-content .c-headline_margin:first-child {
+    margin-top: 0;
+  }
+}
+
+// 検索領域
+.search-area-wrapper {
+  background-color: $black-f7-color;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.search-area-header {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-e-color;
+  height: 45px;
+  position: relative;
+  width: 100%;
+}
+
+.search-area-headline {
+  font-weight: normal;
+  padding-top: 14px;
+  text-align: center;
+}
+
+.c-search {
+  border-bottom: 1px solid $black-e-color;
+  padding: 25px 15px;
+}
+
+.g-search-box {
+  background-color: $white-color;
+  background-position: 9px 50%;
+  background-size: 17px 17px;
+  border: 1px solid $black-d6-color;
+  border-radius: 3px;
+  color: $black-6-color;
+  line-height: 24px;
+  padding: 7px 6px 7px 34px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+// カテゴリー一覧リスト
+.c-category-list {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-e-color;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.c-category-list__item {
+  border-bottom: 1px solid $black-e-color;
+  flex-basis: 50%;
+  flex-wrap: wrap;
+
+  &:nth-of-type(odd) {
+    border-right: 1px solid $black-e-color;
+  }
+
+  &:last-of-type,
+  &:nth-last-of-type(2):not(:nth-of-type(even)) {
+    border-bottom: 0;
+  }
+
+  a {
+    color: $black-color;
+    display: block;
+    font-size: 75%;
+    line-height: 42px;
+    padding-left: 40px;
+    position: relative;
+  }
+}
+
+// フッター上部のSNS紹介
+.c-sns-area {
+  background-color: $white-color;
+  padding: 30px 0;
+}
+
+.c-sns-area__title {
+  font-size: 125%;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.c-sns-area__content {
+  margin: 13px auto 0;
+  max-width: 270px;
+}
+
+.c-sns-area__image {
+  width: 100%;
+}
+
+.c-sns-area__text {
+  font-size: 87.5%;
+  line-height: 1.5;
+  padding-top: 10px;
+}
+
+.c-sns-area__list {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto 0;
+  width: 170px;
+}
+
+.c-sns-area__button {
+  img {
+    width: 87px;
+  }
+}
+
+// 共通大見出し
+.main-headline {
+  background-color: $white-color;
+  color: $black-5-color;
+  padding: 24px 15px 0;
+}
+
+// 共通小見出し
+.c-headline {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-e-color;
+  color: $text-black-color;
+  font-size: 87.5%;
+  font-weight: bold;
+  padding: 12px 15px;
+}
+
+.c-headline_margin {
+  border-top: 1px solid $black-e-color;
+  margin-top: 15px;
+}
+
+.c-headline_double {
+  display: flex;
+  justify-content: space-between;
+}
+
+.c-headline-double_left {
+  font-weight: normal;
+}
+
+// 広告表示エリア
+.ad-area {
+  border-bottom: 1px solid $black-e-color;
+  padding: 14px 15px;
+  text-align: center;
+  width: 100%;
+}
+
+// ボタン上部の説明、ログインや会員登録で使う
+.c-addition-container {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-e-color;
+  padding: 18px 15px 24px;
+}
+
+.c-addition-message {
+  color: $text-black-color;
+  font-size: 75%;
+  line-height: 1.33;
+  text-align: center;
+}

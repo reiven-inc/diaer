@@ -1,0 +1,297 @@
+<% # ページのtitle
+   title = "#{@article.article_title}｜DIAER [ディアー]"
+   # ページのdescription
+   description = @article.article_description
+   # 記事かクイズか
+   subject = @article.quiz? ? 'クイズ' : '記事' %>
+<% content_for :head_info do %>
+<title><%= title %></title>
+<meta name="description" content="<%= description %>">
+<meta property="og:title" content="<%= title %>">
+<meta property="og:image" content="<%= @article.output_image_url %>">
+<meta property="og:type" content="article">
+<meta property="og:url" content="<%= request.url %>">
+<meta property="og:description" content="<%= description %>">
+<% end %>
+<% content_for :add_scripts do %>
+  <%# はてなブックマークボタン %>
+  <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <% if action_name == 'preview' %>
+    <script>
+      $('.column-side a').removeAttr('href data-remote');
+    </script>
+  <% end %>
+<% end %>
+<% if action_name != 'preview' %>
+<% content_for :semantic_data do %>
+<script type="application/ld+json">
+{
+"@context" : "http://schema.org",
+"@graph" :
+[
+{
+  "@type" : "WebSite",
+  "name" : "DIAER",
+  "alternateName" : "ディアー",
+  "url" : "<%= SITE_ROOT %>"
+},
+{
+  "@type": "BreadcrumbList",
+  "itemListElement":
+  [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item":
+      {
+        "@id": "<%= SITE_ROOT %>",
+        "name": "DIAERトップ"
+      }
+    }<% if @article.category %>,
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item":
+      {
+        "@id": "<%= "#{SITE_ROOT}/#{@article.category.alternative_name}" %>",
+        "name": "<%= @article.category.category_name %>"
+      }
+    }<% end %>
+  ]
+},
+{
+  "@type": "Article",
+  "mainEntityOfPage":{
+    "@type":"WebPage",
+    "@id":"<%= request.url %>"
+  },
+  "headline": "<%= @article.article_title %>",
+  "image": {
+    "@type": "ImageObject",
+    "url": "<%= @article.output_image_url(:original) %>",
+    "width": 750,
+    "height": 420
+  },
+  "datePublished": "<%= @article.checkpoint ? @article.checkpoint : Time.current %>",
+  "dateModified": "<%= @article.updated_at %>",
+  "description": "<%= @article.article_description %>",
+  "author":
+  {
+    "@type": "Person",
+    "name": "<%= @author_name %>",
+    "image": "<%= @author_image %>"
+  },
+  "publisher": {
+    "@type": "Corporation",
+    "name": "REIVEN, Inc.",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "<%= "#{CDN_IMAGE_ROOT}/diaer/reiven.png" %>",
+      "width": 60,
+      "height": 60
+    }
+  }
+}
+]
+}
+</script>
+<% end %>
+<% end %>
+
+<main class="main-content">
+  <div class="h-breadcrumb">
+    <ol class="breadcrumb-list container">
+      <li class="breadcrumb-list__item"><a href="/">DIAERトップ</a></li>
+      <li class="breadcrumb-list__item"><% if @article.category %><a href="<%= "/#{@article.category.alternative_name}" %>"><%= @article.category.category_name %></a><% else %><a href="#">カテゴリー未定</a><% end %></li>
+      <li class="breadcrumb-list__item"><%= @article.article_title %></li>
+    </ol>
+  </div>
+  <% if action_name == 'preview' %>
+    <div class="run-message">プレビュー</div>
+  <% elsif notice %>
+    <div class="run-message"><%= notice %></div>
+  <% end %>
+  <div class="container">
+    <div class="column-container two-columns">
+      <div class="column-main">
+        <article>
+          <div class="content-top">
+            <header class="article-top">
+              <% if @article.checkpoint.present? %>
+                <time datetime="<%= @article.checkpoint.strftime('%Y-%m-%dT%H:%M%:z') %>" class="article-top__date"><%= @article.checkpoint.strftime('%Y年%m月%d日') + '公開' %></time>
+              <% else %>
+                <p class="article-top__date">まだ公開されていない<%= subject %></p>
+              <% end %>
+              <div class="article-top__title-area">
+                <p class="article-top__image" style="background-image: url(<%= @article.output_image_url(:thumb) %>);"></p>
+                <div class="article-top__text">
+                  <h1 class="article-top__title"><%= @article.article_title %></h1>
+                </div>
+              </div>
+              <% if @article.image_from? # 他サイト引用 %>
+                <p class="articlecontent-from">出典：<%= link_to @article.image_from.sub(/http:\/\/|https:\/\//,'').sub(/\/.*/,''), @article.image_from, target: '_blank' %></p>
+              <% elsif @article.account_image_id? && @article.account_image # アカウント画像 %>
+                <% account = @article.account_image.account %>
+                <% if account.present? %>
+                  <div class="articlecontent-account-from">Photo by <%= link_to account.name, "/accounts/#{account.id}" %></div>
+                <% end %>
+              <% end %>
+              <p class="article-top__explanation"><%= @article.article_description %></p>
+              <div class="article-top__share">
+                <% if action_name != 'preview' %>
+                  <ul class="article-share__list">
+                    <li class="list__item article-share article-share_facebook">
+                      <a href="<%= "https://www.facebook.com/sharer/sharer.php?u=#{url_encode("#{SITE_ROOT}/#{@article.id}")}" %>" target="_blank">シェア</a>
+                    </li>
+                    <li class="list__item article-share article-share_twitter">
+                      <a href="<%= "https://twitter.com/intent/tweet?url=#{url_encode("#{SITE_ROOT}/#{@article.id}")}&related=#{TWITTER_ID}&text=#{url_encode("#{title}")}" %>" target="_blank">ツイート</a>
+                    </li>
+                    <li class="list__item article-share article-share_hatena">
+                      <a href="<%= "http://b.hatena.ne.jp/entry/s/#{DOMAIN}/#{@article.id}" %>" class="hatena-bookmark-button" data-hatena-bookmark-title="<%= title %>" data-hatena-bookmark-layout="simple" title="このエントリーをはてなブックマークに追加">はてブ</a>
+                    </li>
+                    <li class="list__item article-facebook-like"><div class="fb-like" data-href="https://www.facebook.com/<%= FACEBOOK_ID %>" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div></li>
+                  </ul>
+                <% end %>
+              </div>
+            </header>
+          </div>
+          <div class="content-main">
+            <div class="article-body">
+              <%# 通常の記事かクイズかで分岐 %>
+              <% if @article.quiz? # クイズのコンテンツ %>
+                <%= render 'articles/questions/questions_show', article: @article %>
+              <% else # 記事のコンテンツ %>
+                <%= render 'articlecontents_show', article: @article %>
+              <% end %>
+              <div class="article-body__share">
+                <% if action_name != 'preview' %>
+                  <ul class="article-share__list">
+                    <li class="list__item article-share article-share_facebook">
+                      <a href="<%= "https://www.facebook.com/sharer/sharer.php?u=#{url_encode("#{SITE_ROOT}/#{@article.id}")}" %>" target="_blank">シェア</a>
+                    </li>
+                    <li class="list__item article-share article-share_twitter">
+                      <a href="<%= "https://twitter.com/intent/tweet?url=#{url_encode("#{SITE_ROOT}/#{@article.id}")}&related=#{TWITTER_ID}&text=#{url_encode("#{title}")}" %>" target="_blank">ツイート</a>
+                    </li>
+                    <li class="list__item article-share article-share_hatena">
+                      <a href="<%= "http://b.hatena.ne.jp/entry/s/#{DOMAIN}/#{@article.id}" %>" class="hatena-bookmark-button" data-hatena-bookmark-title="<%= title %>" data-hatena-bookmark-layout="simple" title="このエントリーをはてなブックマークに追加">はてブ</a>
+                    </li>
+                    <li class="list__item article-facebook-like"><div class="fb-like" data-href="https://www.facebook.com/<%= FACEBOOK_ID %>" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div></li>
+                  </ul>
+                <% end %>
+              </div>
+              <footer>
+                <div class="ad-double-area">
+                  <div class="ad-double-unit ad-double-unit__left">
+                    <%= render 'ad', type: 'pc_article_foot_left' %>
+                  </div>
+                  <div class="ad-double-unit ad-double-unit__right">
+                    <%= render 'ad', type: 'pc_article_foot_right' %>
+                  </div>
+                </div>
+                <div class="article-body__addition">
+                  <div class="keyword-area">
+                    <h2 class="c-headline-ja">この<%= subject %>のキーワード</h2>
+                    <ul class="keyword-area__list list">
+                      <% @keywords.each do |k| %>
+                        <li class="list__tag"><%= link_to k.keyword.keyword_name, "/keywords/#{k.keyword.id}", class: 'keyword-tag' %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+                <div class="article-body__curator curator">
+                  <h2 class="c-headline-ja">この<%= subject %>のライター</h2>
+                  <div class="curator__content content">
+                    <a href="<%= @author_link %>">
+                      <div class="content__image"><img src="<%= @author_image %>" alt="<%= @author_name %>" class="cover-img"></div>
+                      <div class="content__text text">
+                        <h3 class="text__name"><%= @author_name %></h3>
+                        <p class="text__explanation"><%= html_br(@author_profile) %></p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <% if action_name == 'preview' %>
+                  <div class="c-form-writing"><a href="/articles/<%= params[:id] %>/edit" id="close-button" class="submit-button submit-button_white mt0">戻る</a></div>
+                <% end %>
+              </footer>
+            </div>
+          </div>
+        </article>
+        <% if action_name != 'preview' && @article.category %>
+          <aside class="content-main">
+            <div class="c-headline">
+              <span lang="en" class="c-headline__title-english">RECOMMEND</span>
+              <h2 class="c-headline__title">関連記事</h2>
+            </div>
+            <%= render 'mainarticle', articles: @recommends, title_length: MAX_DISPLAY_TITLE_AT_2COLUMN, description_length: MAX_DISPLAY_DESCRIPTION_AT_2COLUMN, page: false %>
+            <div class="article-body__addition">
+              <h2 class="c-headline-ja">カテゴリー覧</h2>
+              <ul class="article-category-list">
+                <% @categories.each do |c| %>
+                  <li class="article-category-list__item item">
+                    <a href="/<%= c.alternative_name %>">
+                      <%= image_tag c.category_image.url(:thumb), alt: c.category_name, class: 'item__image' %>
+                      <dl class="item__text">
+                        <dt class="item-text__name"><%= c.category_name %></dt>
+                        <dd class="item-text__count"><%= c.article_size %>件の記事</dd>
+                      </dl>
+                    </a>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </aside>
+        <% end %>
+      </div>
+      <div class="column-side">
+        <aside id="stay_element" class="content-side">
+          <div class="article-addition">
+            <%# author_viewページのみ表示 %>
+            <% if action_name == 'author_view' %>
+              <div class="article-addition-command-button article-addition-command-button_edit button"><a href="<%= "/articles/#{params[:id]}/edit" %>">記事を編集する</a></div>
+              <div class="article-addition-command-button article-addition-command-button_delete button"><%= link_to('記事を削除する', "/articles/#{params[:id]}", method: :delete, data: {confirm:"この記事を削除してよろしいですか?"}) %></div>
+            <% end %>
+            <div id="save-info">
+              <%= render 'save', article: @article, save: @save %>
+            </div>
+          </div>
+          <%# author_viewページでは表示しない %>
+          <% unless action_name == 'author_view' %>
+            <div class="ad-area">
+              <%= render 'ad', type: 'pc_side_up' %>
+            </div>
+          <% end %>
+          <div class="pl10">
+            <div class="c-headline">
+              <span lang="en" class="c-headline__title-english">RANKING</span>
+              <h2 class="c-headline__title">昨日のアクセスランキング</h2>
+            </div>
+            <%= render 'ranking', rankings: @rankings.limit(5) %>
+            <div class="c-headline">
+              <span lang="en" class="c-headline__title-english">AND MORE</span>
+              <h2 class="c-headline__title">編集部のおすすめ記事</h2>
+            </div>
+            <%= render 'sidearticle', articles: @andmores %>
+            <div class="c-headline">
+              <span lang="en" class="c-headline__title-english">NEW</span>
+              <h2 class="c-headline__title">新着記事</h2>
+            </div>
+            <%= render 'sidearticle', articles: @news, addition: 'new_article_list' %>
+            <div class="c-headline">
+              <span lang="en" class="c-headline__title-english">KEYWORD</span>
+              <h2 class="c-headline__title">いまDIAERで話題のキーワード</h2>
+            </div>
+            <%= render 'keywordlist', keywords: @keyword_pickups %>
+          </div>
+        </aside>
+      </div>
+    </div>
+    <div class="f-breadcrumb">
+      <ol class="breadcrumb-list container">
+        <li class="breadcrumb-list__item"><a href="/">DIAERトップ</a></li>
+        <li class="breadcrumb-list__item"><% if @article.category %><a href="<%= "/#{@article.category.alternative_name}" %>"><%= @article.category.category_name %></a><% else %><a href="#">カテゴリー未定</a><% end %></li>
+        <li class="breadcrumb-list__item"><%= @article.article_title %></li>
+      </ol>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,139 @@
+// お知らせ関連CSS
+@charset "UTF-8";
+
+.notice-content,
+.notice-list {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-e-color;
+  padding: 10px 15px;
+}
+
+.notice-list-item {
+  border-bottom: 1px solid $black-c-color;
+
+  &:last-of-type {
+    border-bottom: 0;
+  }
+
+  a {
+    display: flex;
+    padding: 11px 0;
+  }
+}
+
+.notice-list-item-image {
+  flex-basis: 70px;
+  height: 70px;
+  min-width: 70px;
+  overflow: hidden;
+  position: relative;
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.notice-list-item-text-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: 11px;
+}
+
+.notice-list-item-title {
+  color: $theme-color;
+  font-size: 81.3%;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.notice-list-item-description {
+  color: #2f2f32;
+  font-size: 81.3%;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.notice-list-item-date {
+  color: #929496;
+  font-size: 62.5%;
+  line-height: 1.4;
+}
+
+.notice-title {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-e7-color;
+  color: $text-black-color;
+  font-size: 125%;
+  font-weight: normal;
+  margin-bottom: 13px;
+  padding: 16px 0 10px;
+}
+
+.notice-show-item {
+  margin-bottom: 18px;
+}
+
+.notice-text {
+  color: $text-black-color;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.notice-image {
+  max-width: 100%;
+}
+
+.notice-button-link {
+  background-color: $white-color;
+  border: 1px solid $black-a-color;
+  border-radius: 4px;
+  color: $text-black-color;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%;
+
+  &:hover {
+    background-color: $black-fa-color;
+    color: $text-black-color;
+    text-decoration: none;
+  }
+}
+
+.notice-text-link {
+  border-left: 3px solid $theme-color;
+  padding: 0 0 2px 8px;
+
+  a {
+    color: $black-6-color;
+    font-size: 18px;
+    line-height: 1.5;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.label-new {
+  &::before {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAANlBMVEUAAAD9OEn9OEn////+m6H+wMT/4eP9YGv9TVv/9fb+qK3+1tn+y879cHr/6+z+gIj+tLn+jpWDfuWYAAAAAnRSTlMAgJsrThgAAADYSURBVDjLjc9RDsQgCARQ1lFR1Nre/7Lb7DbhA5owCX8vE4ZSLB+KOoo6CjofTjbOhQvTOnJcOrGNs1Awrj6Ms5DRAWx1LmylrtKvgaLOh9IxIOlq6jzI6+4EetM+F97mWIlL1T4XCqTgZN3rwXymNEZGGVOdBytyKkBJdarzYLsld8jEVmcgP3Id6FmdgRnHlM231B0vEB2/K+os/MnKW+YBUWfhI9vzqzoLVarz4X+Quhf4yGycD7XvJVFHUUdRR1FHUUdRR1FHUUdRR1FHUUdRR1FHUfcFAx4JX8T7PWgAAAAASUVORK5CYII=);
+    background-size: 20px;
+    content: '';
+    display: block;
+    height: 20px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 20px;
+  }
+}

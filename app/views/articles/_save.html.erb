@@ -1,0 +1,17 @@
+<dl class="article-addition-data-list">
+  <dt class="article-addition-data-list__key">Love</dt>
+  <dd class="article-addition-data-list__value"><%= @article.saves_count %></dd>
+</dl>
+<% if @save.exists? %>
+  <div id="save_remove" class="favorite-button-square favorite-button-square_remove">
+    <%= link_to "/#{params[:id]}/cancel_save", method: :delete, remote: true, rel: 'nofollow' do %>
+      <i class="favorite-button-square-icon icon-favorite_white"></i>LOVE
+    <% end %>
+  </div>
+<% else %>
+  <div id="save_add" class="favorite-button-square favorite-button-square_add">
+    <%= link_to "/#{params[:id]}/save", method: :post, remote: true, rel: 'nofollow' do %>
+      <i class="favorite-button-square-icon icon-favorite_pink"></i>LOVE
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,89 @@
+// パンくずリスト
+@charset "UTF-8";
+
+.h-breadcrumb {
+  background-color: $white-color;
+  border-bottom: 2px solid $black-e-color;
+  height: 32px;
+
+  .breadcrumb-list {
+    overflow: hidden;
+  }
+
+  .breadcrumb-list__item {
+    color: $text-black-color;
+    float: left;
+    font-size: 81.2%;
+    height: 32px;
+    line-height: 32px;
+
+    a {
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAeCAMAAADEgrRGAAAAUVBMVEUAAADd3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3NBju8AAAAGnRSTlMADN3PF/rqwbyrmX9oRCTy8eeuk1VTQDMxInHb0ZcAAABtSURBVBjTfZFHEsAgDANDSKOmN/3/oblmOcDNO9iWpSaNpvk/qwl118oB5EE7wD0rAKReEeCQToCo/gIIWh4AryEDOLUdwCQL5cZqNIXyDR3vKl+p+Z/zuI96qJf38F76Qb/oZ+k386jkVeb5ARpaBn/4A6GyAAAAAElFTkSuQmCC) 100% 50% no-repeat;
+      background-size: auto 14px;
+      color: $text-black-color;
+      display: block;
+      height: 100%;
+      margin-right: 10px;
+      max-width: 520px;
+      overflow: hidden;
+      padding-right: 20px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &:last-of-type {
+      font-weight: bold;
+      max-width: 520px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+.f-breadcrumb {
+  margin-top: 30px;
+
+  .breadcrumb-list {
+    overflow: hidden;
+  }
+
+  .breadcrumb-list__item {
+    color: $text-black-color;
+    float: left;
+    font-size: 75%;
+    font-weight: bold;
+
+    &:not(:last-of-type)::after {
+      content: '＞';
+      font-weight: normal;
+      padding-right: 10px;
+    }
+
+    a {
+      color: $text-black-color;
+      font-weight: normal;
+      height: 100%;
+      margin-right: 10px;
+      max-width: 480px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &:last-of-type {
+      max-width: 480px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}

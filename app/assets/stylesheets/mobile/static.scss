@@ -1,0 +1,190 @@
+// 静的情報ページ関連(staticコントローラーのページ)
+@charset "UTF-8";
+
+// 利用規約、プライバシーポリシー
+.law-container {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-e-color;
+  padding: 25px 15px 30px;
+}
+
+.law-heading {
+  color: $black-86-color;
+  font-size: 87.5%;
+  font-weight: normal;
+
+  &:not(:first-child) {
+    padding-top: 18px;
+  }
+}
+
+.law-preamble {
+  color: $text-black-color;
+  font-size: 75%;
+  line-height: 1.42;
+  padding-top: 8px;
+}
+
+.law-list {
+  padding: 8px 0 0 16px;
+}
+
+.law-list-item {
+  color: $text-black-color;
+  font-size: 75%;
+  line-height: 1.42;
+  list-style-type: decimal;
+}
+
+.law-list-item_disc {
+  list-style-type: disc;
+}
+
+.law-nested-list {
+  padding-top: 4px;
+
+  .law-list-item {
+    counter-increment: count;
+    font-size: 100%;
+    list-style-position: inside;
+    list-style-type: none;
+    padding-left: 28px;
+    text-indent: -28px;
+
+    &::before {
+      content: '(' counter(count) ') ';
+      display: inline-block;
+      text-indent: 0;
+      width: 28px;
+    }
+  }
+}
+
+.law-leave {
+  color: $text-black-color;
+  font-size: 75%;
+  line-height: 1.42;
+
+  &:not(:first-child) {
+    padding-top: 18px;
+  }
+}
+
+// 運営会社
+.c-introduction-headline {
+  color: $text-black-color;
+  font: bold 100% 'PT Sans', sans-serif;
+  text-align: center;
+}
+
+.company-top-title {
+  color: $white-color;
+  font: bold 156.3% 'PT Sans', sans-serif;
+}
+
+.company-about {
+  background-color: $black-fd-color;
+  border-bottom: 1px solid $black-e-color;
+  padding: 17px 15px 30px;
+}
+
+.company-about-map {
+  border: 3px solid $white-color;
+  box-shadow: 1px 1px 1px $transparent-black-3-color;
+  height: 202px;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.company-about-list {
+  color: $text-black-color;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 75%;
+  line-height: 1.17;
+  padding-top: 14px;
+}
+
+.company-about-list__term {
+  flex-basis: 90px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.company-about-list__description {
+  padding-top: 10px;
+  width: calc(100% - 90px);
+
+  a {
+    color: $black-9-color;
+    text-decoration: underline;
+  }
+}
+
+// よくある質問
+.qa-list {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-e-color;
+  overflow: hidden;
+  padding: 22px 15px 28px;
+}
+
+.qa-item {
+  font-size: 87.5%;
+  line-height: 1.29;
+  padding-left: 26px;
+  position: relative;
+
+  &::before {
+    font-weight: bold;
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+}
+
+.qa-item_question {
+  color: $text-black-color;
+
+  &:not(:first-of-type) {
+    margin-top: 22px;
+  }
+
+  &::before {
+    color: $black-5-color;
+    content: 'Q';
+  }
+}
+
+.qa-item_answer {
+  color: $black-6-color;
+  margin-top: 10px;
+
+  &::before {
+    color: $red-em-color;
+    content: 'A';
+  }
+
+  a {
+    color: $red-em-color;
+    text-decoration: underline;
+  }
+}
+
+.qa-item-text_margin {
+  margin-top: 10px;
+}
+
+.qa-contact-box {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-e-color;
+  margin-top: 15px;
+  padding: 20px 15px;
+}
+
+.qa-contact-box__text {
+  color: $text-black-color;
+  font-size: 75%;
+  line-height: 1.33;
+  text-align: center;
+}

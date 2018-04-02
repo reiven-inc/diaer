@@ -1,0 +1,159 @@
+// トップページ関連CSS
+@charset "UTF-8";
+
+$top-image-width: 326px;
+$top-image-height: 218px;
+$top-image-inetrval: 16px;
+$top-image-textblock-height: 96px;
+
+// トップページのアイキャッチ用記事
+.top-area {
+  background-color: $black-f5-color;
+  border-bottom: 1px solid $black-e-color;
+  padding: 20px 0 15px;
+
+  .top-article {
+    background-color: $white-color;
+    box-shadow: 0 0 2px $black-9-color;
+    float: left;
+    height: $top-image-height + $top-image-textblock-height;
+    margin-right: $top-image-inetrval;
+    position: relative;
+    width: $top-image-width;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    a:hover {
+      .top-article__image {
+        opacity: .8;
+      }
+
+      .top-article__title {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .top-article__image {
+    @include img-cover-wrap($top-image-width, $top-image-height);
+    background-color: $blue-gray-color;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .top-article__title {
+    color: $text-black-color;
+    font-weight: normal;
+    line-height: 1.5;
+    padding: 12px 12px 0;
+    word-break: break-all;
+  }
+
+  .top-article__info {
+    bottom: 10px;
+    position: absolute;
+    right: 20px;
+  }
+
+  .info-item__list {
+    float: left;
+    margin-right: 8px;
+
+    a:hover {
+      .info-item__author-image {
+        opacity: .8;
+      }
+
+      .info-item__author-name {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .info-item__author-image {
+    border-radius: 50%;
+  }
+
+  .info-item__author-name {
+    color: $black-86-color;
+    font-size: 75%;
+  }
+}
+
+// トップ下の説明
+.under-about {
+  margin-top: 10px;
+}
+
+.under-about__paragraph {
+  color: $black-9-color;
+  font-size: 68.8%;
+  line-height: 1.7;
+  margin-top: 16px;
+}
+
+.c-headline_under-about {
+  margin-top: 60px;
+}
+
+// SNSフォローボタン
+.sns-follow-area {
+  padding-top: 20px;
+}
+
+.sns-follow-button {
+  &:not(:last-of-type) {
+    margin-bottom: 14px;
+  }
+
+  a {
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    display: block;
+    font-size: 81.3%;
+    font-weight: bold;
+    line-height: 56px;
+    text-align: center;
+
+    &::before {
+      background-size: 22px;
+      content: '';
+      display: inline-block;
+      height: 22px;
+      margin-right: 8px;
+      vertical-align: -6px;
+      width: 22px;
+    }
+  }
+}
+
+.sns-follow-button_twitter {
+  a {
+    background-color: $blue-twitter-color;
+    border-color: $blue-twitter-color;
+    color: $white-color;
+
+    &::before {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAmVBMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////VHQRUAAAAMnRSTlMAA/r3C9fNsikH8uSHUkU/GBTr59HIp5+VeXNbLSUQ2rqQgGpgMiHFwIxsZE06HK+hNQZ1ZaIAAAFOSURBVDjL3dHZcoJAEIXhM4AgyCrKIuC+xS1Jv//DpRBBYAbItf+FJfDVVE03PqujqUokq9tH+Zz/6K6I6qZERfKWAXC0OH99nS15q5zpnWabK5o+1YnOCoc1amc9z5CI5l7LJpzd4bADsvzvaNzEq7bVgomcAmlxi2vdHkjQDYBLReva4QueShby/PIxykq84azv4FlEVd+W0oG/UJRJ9M7QYttlcSeGyX0yuDfbgnoe02iwS4F/5eAyG8S318n0n8q5jmg4g1UbGG6NV8pkGC9QZkuD+IgqSx6wc9RK5/04wTuWLZO+Uft6RYent0O9fa9dMTRa92EHzZZqt43QTvnpHJsOvnswFdnJA8LYnl/ldCy2big4NxXScSTYueo2kadDGVumcIGb9t3szu2pjuhaQj5KGITZodGaQeigO3aPA9UnImNyChcHho/pD2TLtofVFKCqAAAAAElFTkSuQmCC);
+    }
+  }
+}
+
+$instagram-background-color: #f9f9f9;
+$instagram-border-color: #dbdbdb;
+$instagram-text-color: #262626;
+
+.sns-follow-button_instagram {
+  a {
+    background-color: $instagram-background-color;
+    border-color: $instagram-border-color;
+    color: $instagram-text-color;
+
+    &::before {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAVFBMVEUAAAAmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYzp9xuAAAAG3RSTlMAD+9HZePIwKV1LSgFTzffzh/Ytn0y95SbULjNpxgbAAABYklEQVQ4y5WV25KDIAyGwQMCVTy02u7y/u+5SdyMUCud/BcMdL7GnAiKtTprxqqKmapqNNatKlPfLLGgpekP9jbFL5puzIYqflUV/u3ubOdqP2utEmk9+9p1O022e/LhDvsr3e7kCfrd4O6pinoi08BmQbvX3NzUsKLtBfIbQdc+1FuMv+AJUqtyGJu6FAUEtjFKpyytmXQYhqAVqd29JZtWGfxnVkwTSYbK9oLdNoM7+IsaYfWJj3BmtWBEv9oJbXk4jworMivWI2Z6HEnBuhCs39i269o3WhMcE7gmwJJX3tKhTuBIMMeG5raBjQ0bfoSbM4O58MgyTWm7gA3lMpGlfJ1hdsunsOeAznBAF5k76hc+wsOpS6gjfkSwyA1RgLLUyYsiLreokUQtKmr+8rXKsziWLyyLL2xxFLB4FBSHTN4ljsdXUTy+eDCWxINRNHJFw1zyTEgeIMnTJn40Rc/xH3bzU3/VLtceAAAAAElFTkSuQmCC);
+    }
+  }
+}

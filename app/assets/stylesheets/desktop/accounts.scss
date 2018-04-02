@@ -1,0 +1,320 @@
+// アカウント関連CSS
+@charset "UTF-8";
+
+// アカウントページ系
+.account-content {
+  margin: 20px 0 40px;
+}
+
+// 詳細へのリンク
+.c-list-link {
+  margin-top: 30px;
+  text-align: right;
+
+  a {
+    color: $theme-color;
+    font-size: 81.3%;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &::before {
+      border: 4px solid transparent;
+      border-left-color: $theme-color;
+      content: '';
+      display: inline-block;
+      height: 0;
+      vertical-align: 1px;
+      width: 0;
+    }
+  }
+}
+
+// 情報テーブル
+.information-table {
+  width: 100%;
+
+  tr {
+    border-top: 1px solid $black-d-color;
+    font-size: 87.5%;
+    line-height: 1.5;
+
+    &:last-of-type {
+      border-bottom: 1px solid $black-d-color;
+    }
+  }
+
+  th {
+    background-color: $black-f6-color;
+    color: $black-6-color;
+    padding: 12px 4px 12px 20px;
+    text-align: left;
+    width: 130px;
+  }
+
+  td {
+    color: $text-black-color;
+    padding: 12px 4px 12px 20px;
+  }
+}
+
+// マップ領域
+.access-map {
+  height: 360px;
+  margin-top: 30px;
+}
+
+// 1列に何個画像を並べるか
+$images-per-row: 4;
+// 画像間の間隔
+$images-inverval: 16px;
+// 画像リストの幅
+$image-list-width: $two-column-content-width + $images-inverval;
+// 画像アイテムの1辺の長さ(maigin含む)
+$image-list-item-size: $image-list-width / $images-per-row;
+
+// アカウント画像一覧
+.image-list {
+  list-style: none;
+  overflow: hidden;
+  padding-left: 0;
+  width: $image-list-width;
+}
+
+.image-list-item {
+  float: left;
+  width: $image-list-item-size;
+
+  a {
+    display: block;
+    margin: 0 $images-inverval $images-inverval 0;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+}
+
+.image-list-image {
+  height: $image-list-item-size - $images-inverval;
+  width: $image-list-item-size - $images-inverval;
+}
+
+// 幅の広い画像リストの幅(写真トップページなどで使用)
+$image-list-wide-width: $right-wide-column-width;
+// 幅の広い画像アイテムの1辺の長さ(maigin含む)
+$image-list-wide-item-size: $image-list-wide-width / $images-per-row;
+
+.image-list-wide {
+  width: $right-wide-column-width;
+
+  .image-list-item {
+    width: $image-list-wide-item-size;
+  }
+
+  .image-list-image {
+    height: $image-list-wide-item-size - $images-inverval;
+    width: $image-list-wide-item-size - $images-inverval;
+  }
+}
+
+.empty-message {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.image-overlay {
+  background-color: $transparent-black-5-color;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1040;
+}
+
+// アカウント画像詳細ページ
+// アカウント上方
+.account-info {
+  display: table;
+  margin-bottom: 20px;
+  min-height: 50px; // アカウントが削除されたとき用
+  position: relative;
+}
+
+.account-info-image {
+  display: table-cell;
+  vertical-align: middle;
+  width: 50px;
+
+  &:hover {
+    opacity: .8;
+  }
+
+  img {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+  }
+}
+
+.account-info-name {
+  color: $text-black-color;
+  display: table-cell;
+  font-size: 112.5%;
+  font-weight: bold;
+  line-height: 1.5;
+  overflow: hidden;
+  padding-left: 8px;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// メインのアカウント画像
+.account-image {
+  margin-bottom: 30px;
+  max-height: $two-column-content-width;
+  max-width: $two-column-content-width;
+}
+
+.image-info-comment {
+  color: $text-black-color;
+  font-size: 93.8%;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+// アカウント画像のカラーリスト
+.color-list {
+  overflow: hidden;
+  width: $left-column-width;
+}
+
+.color-list-item {
+  float: left;
+  margin: 0 7px 7px 0;
+}
+
+.color-icon {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: normal;
+  position: relative;
+
+  &:hover {
+    background-color: $black-e-color;
+  }
+
+  &::before {
+    border-radius: 3px;
+    content: '';
+    display: block;
+    height: 18px;
+    margin: 3px;
+    width: 18px;
+  }
+}
+
+.color-icon-active {
+  border-color: $black-9-color;
+}
+
+.color-icon-white {
+  &::before {
+    background-color: $image-color-white-background;
+    border: 1px solid $image-color-white-border;
+  }
+}
+
+.color-icon-pink {
+  &::before {
+    background-color: $image-color-pink;
+  }
+}
+
+.color-icon-blue {
+  &::before {
+    background-color: $image-color-blue;
+  }
+}
+
+.color-icon-red {
+  &::before {
+    background-color: $image-color-red;
+  }
+}
+
+.color-icon-yellow {
+  &::before {
+    background-color: $image-color-yellow;
+  }
+}
+
+.color-icon-orange {
+  &::before {
+    background-color: $image-color-orange;
+  }
+}
+
+.color-icon-green {
+  &::before {
+    background-color: $image-color-green;
+  }
+}
+
+.color-icon-purple {
+  &::before {
+    background-color: $image-color-purple;
+  }
+}
+
+.color-icon-beige {
+  &::before {
+    background-color: $image-color-beige;
+  }
+}
+
+.color-icon-black {
+  &::before {
+    background-color: $image-color-black;
+  }
+}
+
+.color-icon-brown {
+  &::before {
+    background-color: $image-color-brown;
+  }
+}
+
+.color-icon-gray {
+  &::before {
+    background-color: $image-color-gray;
+  }
+}
+
+.color-icon-silver {
+  &::before {
+    background-image: $image-color-silver-gradient;
+  }
+}
+
+.color-icon-gold {
+  &::before {
+    background-image: $image-color-gold-gradient;
+  }
+}
+
+.color-icon-other {
+  &::before {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkAgMAAACcbnALAAAADFBMVEUAZuQsmUr55kLZACeEtmNwAAAAGUlEQVQY02P4DwRfQ4FgCLFAgGsVEAwdFgAdtKFfXbjm4gAAAABJRU5ErkJggg==) no-repeat;
+    background-size: 18px;
+  }
+}

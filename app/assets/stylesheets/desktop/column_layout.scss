@@ -1,0 +1,76 @@
+// カラムレイアウト関連
+@charset "UTF-8";
+
+.column-container {
+  overflow: hidden;
+  padding-top: 30px;
+  position: relative;
+}
+
+.column-container_qa {
+  margin-left: auto;
+  margin-right: auto;
+  width: 762px;
+}
+
+.column-main {
+  float: left;
+  overflow: hidden;
+  position: relative;
+  width: $content-width;
+
+  .right-wide-two-columns & {
+    width: $site-width;
+  }
+}
+
+.column-side {
+  float: left;
+  width: $right-column-width;
+}
+
+.content-top {
+  border-right: 1px solid $black-e-color;
+  overflow: hidden;
+
+  .two-columns & {
+    padding-right: $two-column-interval;
+  }
+
+  .three-columns & {
+    padding-right: $three-column-interval;
+  }
+}
+
+.content-nav {
+  float: left;
+  min-height: 1px;
+  width: $left-column-width;
+}
+
+.content-main {
+  float: left;
+
+  .two-columns & {
+    border-right: 1px solid $black-e-color;
+    padding-right: $two-column-interval;
+    width: $content-width;
+  }
+
+  .right-wide-two-columns & {
+    border-left: 1px solid $black-e-color;
+    padding-left: $three-column-interval;
+    width: $right-wide-column-width;
+  }
+
+  .three-columns & {
+    border-left: 1px solid $black-e-color;
+    border-right: 1px solid $black-e-color;
+    padding: 0 $three-column-interval;
+    width: $center-column-width;
+  }
+}
+
+.content-side {
+  width: $right-column-width;
+}

@@ -1,0 +1,53 @@
+// モーダルウィンドウ関連
+@charset "UTF-8";
+
+// オーバーレイ(透明、メニュー出現時に本コンテンツにかぶせる)
+.overlay {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+}
+
+// オーバーレイ(黒系、カラー選択時のモーダル表示)
+.overlay-color {
+  background-color: $overlay-color;
+  height: 100%;
+  left: 0;
+  padding: 29px 15px 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 21;
+}
+
+// モーダルウィンドウ
+.modal-window {
+  background-color: $white-color;
+  overflow: hidden;
+  width: 100%;
+}
+
+.modal-header {
+  align-items: center;
+  border-bottom: 1px solid $black-e-color;
+  display: flex;
+  height: 60px;
+  justify-content: center;
+}
+
+.modal-headline {
+  color: $text-black-color;
+  font-size: 118.8%;
+}
+
+.modal-body {
+  padding: 15px 0 20px;
+  position: relative;
+}
+
+.modal-button-area {
+  margin: 35px 15px 0;
+}

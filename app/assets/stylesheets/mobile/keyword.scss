@@ -1,0 +1,92 @@
+// キーワード関連
+@charset "UTF-8";
+
+// キーワードリスト
+.article-keyword-list {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-e-color;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16px 11px 18px;
+}
+
+.article-keyword-list__item {
+  margin: 4px;
+}
+
+.keyword-tag {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAUCAMAAACknt2MAAAAclBMVEUAAAD/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZn/mZnzV4uiAAAAJXRSTlMABfsLvaLx6uLbzsmFczcjGxD3skUUwpNSPy3Tt7BiJ5WSa2NcHB3L/wAAAMNJREFUKM9t0NnWgiAUhuEPcERwSE1t/Ie++7/FllhQ1HPAyctibTaC1ugFwzmjUy6hzFlei5Re7stFFgd1orNz57NYlk23364vaHRIhsd21HQsgNqnidXYltz8vSSRMlFNwYfiCvf0Wnr26pAzKCRJCaiEqagzxjS6ihOGHT/8I6FB86UkAlIDty9FAXtaXGVcegGgPdJgjlq6Fqxz/ERzTNh8Tm/gifPbn20o26a6x6bkBe9+n/uVM2I2q9R4kuUA7w5kWSk6ZxY+uAAAAABJRU5ErkJggg==) no-repeat 4px 50%;
+  background-size: 12px auto;
+  border: 1px solid $black-e7-color;
+  border-radius: 2px;
+  color: $text-black-color;
+  display: block;
+  font-size: 81.3%;
+  padding: 8px 8px 8px 20px;
+}
+
+.keyword-tag_no-tag {
+  background: none;
+  padding-left: 8px;
+}
+
+// キーワードトップページ
+.keyword-content {
+  border-top: 1px solid $black-e-color;
+  margin-top: 15px;
+}
+
+// キーワード用語
+.dictionary-area {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-e7-color;
+  padding: 15px;
+}
+
+.dictionary-list {
+  &:not(:last-of-type) {
+    margin-bottom: 28px;
+  }
+}
+
+.dictionary-list-line {
+  &:not(:last-of-type) {
+    border-bottom: 1px solid $black-e-color;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+.dictionary-term {
+  color: $theme-color;
+  font-size: 87.5%;
+  margin-bottom: 10px;
+}
+
+.dictionary-data {
+  color: $text-black-color;
+}
+
+.dictionary-data-name {
+  font-size: 112.5%;
+  font-weight: bold;
+}
+
+.dictionary-data-kana {
+  font-size: 87.5%;
+  font-weight: bold;
+}
+
+.dictionary-data-sentence {
+  font-size: 87.5%;
+  line-height: 1.6;
+}
+
+.dictionary-keyword-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dictionary-keyword-list__item {
+  margin: 4px;
+}

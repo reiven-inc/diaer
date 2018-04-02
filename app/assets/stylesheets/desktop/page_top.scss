@@ -1,0 +1,155 @@
+// ページの上部にあるメインのイメージや情報部分
+@charset "UTF-8";
+
+$category-top-text-width: 530px;
+
+// カテゴリーページのトップ
+.category-top {
+  border-bottom: 1px solid $black-e4-color;
+  margin-bottom: 20px;
+  overflow: hidden;
+
+  .category-top__image {
+    background-position: center;
+    background-size: cover;
+    float: left;
+    height: 130px;
+    margin: 0 20px 10px 0;
+    width: 130px;
+  }
+
+  .category-top__text {
+    float: left;
+    width: $category-top-text-width;
+  }
+
+  .category-top__title {
+    color: $text-black-color;
+    font-size: 137.5%;
+    line-height: 1.2;
+
+    a {
+      color: $text-black-color;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .title__number {
+    color: $black-79-color;
+  }
+
+  .category-top__explanation {
+    color: $black-6-color;
+    font-size: 75%;
+    line-height: 1.5;
+    margin-top: 10px;
+  }
+
+  .category-top__relation {
+    clear: both;
+    margin-bottom: 8px;
+  }
+}
+
+$user-top-text-width: 566px;
+
+// ライターやマイページ、アカウントページのトップ
+.user-top {
+  border-bottom: 1px solid $black-e4-color;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.user-top-image-area {
+  background-position: center;
+  background-size: cover;
+  height: 197px;
+  margin-bottom: 68px;
+  position: relative;
+  width: 100%;
+}
+
+.user-top-profile-image {
+  border-radius: 50%;
+  bottom: -50px;
+  height: 100px;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 100px;
+}
+
+.user-top-title {
+  color: $text-black-color;
+  font-size: 125%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.user-top-info {
+  margin: -6px 0 20px;
+  text-align: center;
+}
+
+.user-top-info-item {
+  display: inline-block;
+  font-size: 87.5%;
+
+  &:not(:first-of-type) {
+    margin-left: 40px;
+  }
+}
+
+.user-top-info-content {
+  display: inline-block;
+}
+
+.user-top-info-content-name {
+  color: $black-7-color;
+  display: inline-block;
+  padding-right: 14px;
+
+  &::after {
+    content: ':';
+    padding-left: 6px;
+  }
+}
+
+.user-top-info-content-number {
+  color: $black-5-color;
+  display: inline-block;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+.user-top-explanation {
+  color: $black-6-color;
+  font-size: 87.5%;
+  line-height: 1.4;
+  margin: 0 auto 20px;
+  text-align: center;
+  width: 420px;
+}
+
+.user-top-link {
+  margin-bottom: 20px;
+  text-align: center;
+
+  a {
+    @include button-theme;
+    border-radius: 4px;
+    color: $white-color;
+    display: inline-block;
+    font-size: 87.5%;
+    padding: 8px 0;
+    text-align: center;
+    width: 200px;
+
+    &:hover {
+      opacity: .7;
+    }
+  }
+}

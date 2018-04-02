@@ -1,0 +1,58 @@
+// マイページ(お気に入り、設定)関連
+@charset "UTF-8";
+
+.mypage-setting-form {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-e-color;
+  padding: 5px 0 30px;
+}
+
+.mypage-setting-menu {
+  background-color: $white-color;
+}
+
+.mypage-setting-menu__item {
+  border-bottom: 1px solid $black-e-color;
+}
+
+.mypage-setting-menu-item__link {
+  align-items: center;
+  color: $text-black-color;
+  display: flex;
+  font-size: 81.3%;
+  height: 60px;
+  justify-content: space-between;
+  padding: 0 35px 0 15px;
+  position: relative;
+}
+
+.mypage-setting-menu-item__link_narrow {
+  height: 45px;
+}
+
+.mypage-setting-menu-item__text-value {
+  color: $black-a8-color;
+}
+
+.mypage-setting-menu-item__image-value {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.mypage-delete-content {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-e-color;
+  padding: 24px 15px;
+}
+
+.mypage-delete-message {
+  color: $text-black-color;
+  font-size: 68.8%;
+  line-height: 1.36;
+  text-align: center;
+
+  &:not(:first-of-type) {
+    padding-top: 16px;
+  }
+}

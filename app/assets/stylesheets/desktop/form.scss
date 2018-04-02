@@ -1,0 +1,633 @@
+// フォーム関連
+@charset "UTF-8";
+
+// 共通フォームコンポーネント(設定、記事編集、お問合わせなどで使用)
+.c-form-writing {
+  .item__label {
+    clear: both;
+    color: $black-6-color;
+    display: block;
+    margin-top: 20px;
+
+    &.mt0 {
+      margin-top: 0;
+    }
+  }
+
+  .text-box {
+    @include c-write-box;
+
+    &.mt0 {
+      margin-top: 0;
+    }
+  }
+
+  .text-box_double {
+    float: left;
+    width: 48%;
+
+    &:last-of-type {
+      margin-left: 4%;
+    }
+  }
+
+  .text-area {
+    @include c-write-box;
+    height: 180px;
+    line-height: 1.4;
+
+    &.h82 {
+      height: 82px;
+    }
+
+    &.h98 {
+      height: 98px;
+    }
+
+    &.h146 {
+      height: 146px;
+    }
+
+    &.h160 {
+      height: 160px;
+    }
+
+    &.mt0 {
+      margin-top: 0;
+    }
+
+    &.no-resize {
+      resize: none;
+    }
+  }
+
+  .submit-button {
+    @include button-l;
+    cursor: pointer;
+    margin-top: 9px;
+
+    &:hover {
+      opacity: .8;
+    }
+
+    &:first-of-type {
+      margin-top: 20px;
+    }
+
+    &.mt0 {
+      margin-top: 0;
+    }
+
+    &.mt9 {
+      margin-top: 9px;
+    }
+
+    &.mt20 {
+      margin-top: 20px;
+    }
+  }
+
+  .submit-button_graywhite {
+    @include button-graywhite;
+  }
+
+  .submit-button_gray {
+    @include button-gray;
+  }
+
+  .submit-button_white {
+    @include button-white;
+  }
+
+  .submit-button_theme {
+    @include button-theme;
+  }
+}
+
+// 影ありボタン
+.shadow-button-area {
+  margin-top: 30px;
+
+  input {
+    @include button-gray-shadow;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+}
+
+// エラーメッセージ
+.error-write {
+  margin-bottom: 40px;
+
+  .error-write__item {
+    color: $red-error-color;
+    font-size: 87.5%;
+    line-height: 1.71;
+  }
+
+  .error-write__item_with_list {
+    padding-left: 1em;
+    text-indent: -1em;
+  }
+}
+
+
+.file-input {
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  vertical-align: top;
+
+  .upload-input {
+    cursor: pointer;
+    line-height: 30px;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .upload-button {
+    background-color: $black-d-color;
+    border-bottom: 2px solid $black-a-color;
+    border-radius: 4px;
+    color: $text-black-color;
+    display: inline-block;
+    font-size: 87.5%;
+    margin-right: 8px;
+    padding: 7px 0;
+    text-align: center;
+    width: 120px;
+  }
+}
+
+.upload-filename {
+  color: $text-black-color;
+  font-size: 87.5%;
+  line-height: 30px;
+}
+
+// 設定関連
+.write-list_disable {
+  input[disabled],
+  textarea[disabled] {
+    color: $black-8-color;
+    -webkit-text-fill-color: $black-8-color;
+  }
+}
+
+.write-list-item {
+  position: relative;
+}
+
+.write-list-item_line {
+  border-bottom: 1px solid $black-e-color;
+  padding-bottom: 20px;
+}
+
+.layout-list-button {
+  margin-top: 10px;
+}
+
+.write-list-button {
+  background-color: $white-color;
+  border: 1px solid $black-a-color;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  font-size: 81.3%;
+  padding: 4px 8px;
+}
+
+.user-profile-image__image {
+  @include img-cover-wrap(100px, 100px);
+  border-radius: 50%;
+  margin-top: 8px;
+}
+
+.user-profile-image__text {
+  left: 120px;
+  position: absolute;
+  top: 46px;
+}
+
+.user-background-image__image {
+  background-position: center;
+  background-size: cover;
+  height: 202px;
+  margin-top: 8px;
+  width: 336px;
+}
+
+.user-background-image__text {
+  left: 360px;
+  position: absolute;
+  top: 24px;
+}
+
+.setting-link-button {
+  margin-top: 20px;
+
+  a {
+    @include button-l;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+}
+
+.setting-link-button_theme {
+  a {
+    @include button-theme;
+  }
+}
+
+.setting-delete-link {
+  font-size: 87.5%;
+  margin-top: 30px;
+
+  a {
+    color: $black-9-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.setting-delete-explanation {
+  color: $black-6-color;
+  font-size: 87.5%;
+  line-height: 1.5;
+  margin-top: 26px;
+}
+
+.setting-delete-button {
+  display: inline-block;
+  margin: 32px 20px 0 0;
+
+  a {
+    @include button-l(250px);
+  }
+
+  &:hover {
+    opacity: .8;
+  }
+}
+
+.setting-delete-button_gray {
+  a {
+    @include button-graywhite;
+  }
+}
+
+.setting-delete-button_black {
+  a {
+    background-color: $text-black-color;
+    border: 1px solid $text-black-color;
+    color: $white-color;
+  }
+}
+
+// 横並びボタン
+.form-button-list {
+  margin-top: 40px;
+  text-align: center;
+
+  .list__button {
+    display: inline;
+    margin: 0 10px;
+  }
+
+  .button__item {
+    @include button-m;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+
+  .button__item_gray {
+    @include button-gray;
+  }
+
+  .button__item_theme {
+    @include button-theme;
+  }
+}
+
+// お問い合わせページ
+.contact-form-container {
+  border: 1px solid $black-e-color;
+  margin: 24px auto 10px;
+  padding: 30px;
+  width: 950px;
+
+  .form-list {
+    margin-top: 20px;
+    overflow: hidden;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  .list__key {
+    color: $text-black-color;
+  }
+
+  .list__required-icon {
+    background-color: $theme-color;
+    color: $white-color;
+    display: inline-block;
+    font-size: 75%;
+    font-style: normal;
+    margin-left: 6px;
+    padding: 3px 0;
+    text-align: center;
+    width: 37px;
+  }
+
+  .list__text-box-wrap {
+    overflow: hidden;
+  }
+
+  .list__error {
+    @include form-error-text;
+    display: none;
+  }
+
+  .value__attention {
+    color: $black-86-color;
+    font-size: 75%;
+    line-height: 1.17;
+    padding: 4px 0 0 1em;
+    text-indent: -1em;
+  }
+
+  .attention_mail {
+    color: $text-black-color;
+  }
+
+  &.contact-form-container_form {
+    .list__value {
+      margin-top: 6px;
+      width: 700px;
+    }
+  }
+
+  &.contact-form-container_confirm {
+    .form-list {
+      margin-top: 40px;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+
+    .list__key {
+      float: left;
+      width: 184px;
+    }
+
+    .list__value {
+      float: left;
+      font-weight: bold;
+      width: 546px;
+
+      p:not(:first-of-type) {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  &.contact-form-container_finish {
+    .message {
+      color: $text-black-color;
+      line-height: 1.57;
+      text-align: center;
+    }
+  }
+}
+
+// 新規登録ページ
+.invite-form-container {
+  border: 3px solid $black-e-color;
+  border-radius: 6px;
+  margin: 24px 0 10px;
+  overflow: hidden;
+  padding: 28px 48px;
+  width: 100%;
+
+  .invite__column {
+    width: 430px;
+  }
+
+  .invite__column_left {
+    float: left;
+  }
+
+  .invite__column_right {
+    float: right;
+  }
+
+  .invite__title {
+    color: $text-black-color;
+    font-size: 137.5%;
+  }
+
+  .invite__point {
+    margin-top: 50px;
+  }
+
+  .point__item {
+    border-left: 3px solid $theme-color;
+    color: $text-black-color;
+    font-size: 112.5%;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 24px;
+    padding-left: 7px;
+  }
+
+  .invite__attention {
+    color: $text-black-color;
+    margin-top: 70px;
+    text-align: center;
+  }
+
+  .invite__link-button {
+    margin-top: 20px;
+    text-align: center;
+
+    a {
+      @include button-s(236px);
+      @include button-white;
+
+      &:hover {
+        opacity: .8;
+      }
+    }
+  }
+
+  .invite__table {
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  .table__name {
+    color: $text-black-color;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .table__cell {
+    border: 1px solid $black-d8-color;
+  }
+
+  .table__cell_header {
+    background-color: $black-f2-color;
+    font-size: 87.5%;
+    font-weight: bold;
+    line-height: 1.2;
+    width: 120px;
+  }
+
+  .table__cell_data {
+    padding: 10px 14px;
+  }
+
+  .table__input {
+    border: 1px solid $black-c8-color;
+    border-radius: 4px;
+    font-size: 87.5%;
+    line-height: 1.5;
+    padding: 4px 3px 3px 7px;
+    width: 100%;
+  }
+
+  .invite__agree {
+    color: $text-black-color;
+    font-size: 87.5%;
+    margin-top: 20px;
+    text-align: center;
+
+    a {
+      color: $text-black-color;
+      text-decoration: underline;
+
+      &:hover {
+        opacity: .8;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .invite__submit {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .submit__button {
+    @include button-s;
+    @include button-theme;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+
+  .table__error {
+    @include form-error-text;
+  }
+
+  .invite__forget {
+    margin-top: 13px;
+    text-align: center;
+
+    a {
+      color: $black-8-color;
+      font-size: 75%;
+      text-decoration: underline;
+
+      &:hover {
+        opacity: .8;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// パスワードリセットページ
+.forget-form-container {
+  border: 1px solid $black-e-color;
+  margin: 30px auto 0;
+  padding: 30px;
+  width: 762px;
+
+  .forget__explanation {
+    color: $text-black-color;
+    font-size: 87.5%;
+    line-height: 1.71;
+  }
+
+  .form-list {
+    margin-top: 44px;
+    overflow: hidden;
+
+    &.mt0 {
+      margin-top: 0;
+    }
+  }
+
+  .list__key {
+    color: $text-black-color;
+    float: left;
+    line-height: 40px;
+    width: 165px;
+  }
+
+  .list__value {
+    float: left;
+    width: 535px;
+  }
+
+  .list__error {
+    @include form-error-text;
+    display: none;
+  }
+
+  .forget__button {
+    margin: 40px auto 0;
+    text-align: center;
+  }
+
+  .button__item {
+    @include button-m;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+
+  .button__item_theme {
+    @include button-theme;
+  }
+}
+
+// Railsの仕様でエラー発生時にエラー箇所に
+// field_with_errorsクラスの要素がwrapされるため、そのスタイル調整
+.field_with_errors {
+  display: inline;
+
+  .text-area,
+  .text-box {
+    background-color: $pink-lighter-color;
+  }
+}

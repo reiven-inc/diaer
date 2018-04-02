@@ -1,0 +1,88 @@
+// お気に入りボタン
+@charset "UTF-8";
+
+.icon-favorite_pink {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAqCAMAAAD79pkTAAAAdVBMVEUAAADwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIAuuDfGAAAAJnRSTlMA+1t4BIiu7OTfDfXxgS0ku7WjY0/baDoWEamPVgrTvp1GQpQzGfO2CRgAAAFASURBVDjLldXpboMwEARgO8TchDMHuZO28/6PWBNCp4ki7TK/8OrTemWMMIZZ+nD1ocaUbo0heXhc/tFuH2HI2ZUv+KcBs+7G4u3Mmm121LcIQFa7oLg+9rgufesv+CRNURyqDEB0n/TRAnF7GhffewDV6VQDqLdjLd3EgH1uuvW6SblXlwOXC5B3rKV777ePpxhw5n9WEXyi1UvxACRDTweEU41+0kz96NpnyHfm3a+Tp2Z2ObLUtEBhVHFAa0Kg1PFymDpBbJSJkRiLSssrWAOEWh4Cc7rXsDNm9zSZezL6cw+AjUnHtyqnj5D1vDNSGuDwvJGFapS4n+57oND2zq8pEDXaabEYvKQ3xoiek3gteuoFl/SSlj217Kl1nlr21DpPLXtqpXfUsqeWPbXKU+s8tcpTazy1zus0/76f6786/idDx9/zuQAAAABJRU5ErkJggg==);
+}
+
+.icon-favorite_white {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAqCAMAAAD79pkTAAAAe1BMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////NgkbwAAAAKHRSTlMA+/bxTUI37OIhBs9pWy3msaVxUhL42qGXkox2WDsMA9XJuphiSCUauH8g4wAAAO9JREFUOMudz9eOwyAURdENLuAy7ult+vD/XzhSEhkreeCS/Xi0ELq8Vjlu3lfOtZ+Hwo9/Q2e1M9VXWrLsMrRurr8/KDZq3mx98bqo3LJVDfCt3bKP+dfcuId2sH/cTHPTv7P2bbfPmymuR1ZOWFUCBydugLORc1NydBEd6WN4zzqGr1ExXOGiiuU2Rlu6GN5Rx/CaScu1nmAv5zvgbKW6nQBOSqZVxrVRifQb91Il196HtfdhLfdqBLlXKTx5LdG+TId12OsfkHudQciHtfdh7TslS51kBMqThc5B5r0Oe6/l3ngt8KZBXGNtQMv6B6E8ud7RylY2AAAAAElFTkSuQmCC);
+}
+
+// 四角型お気に入りボタン
+.favorite-button-square {
+  a {
+    border-radius: 2px;
+    display: block;
+    font-size: 112.5%;
+    font-weight: bold;
+    padding: 14px 0;
+    text-align: center;
+    width: 100%;
+
+    &:hover {
+      opacity: .7;
+    }
+  }
+
+}
+
+.favorite-button-square_add {
+  a {
+    background-color: $white-color;
+    border: 1px solid $black-5-color;
+    color: $black-5-color;
+  }
+}
+
+.favorite-button-square_remove {
+  a {
+    background-color: $theme-color;
+    border: 1px solid $theme-color;
+    color: $white-color;
+  }
+}
+
+.favorite-button-square-icon {
+  background-size: 18px 16px;
+  display: inline-block;
+  height: 16px;
+  margin-right: 5px;
+  width: 18px;
+}
+
+// 丸型お気に入りボタン
+.favorite-button-circle {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  a {
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 1px 2px $transparent-black-3-color;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    width: 40px;
+  }
+}
+
+.favorite-button-circle_add {
+  a {
+    background-color: $white-color;
+  }
+}
+
+.favorite-button-circle_remove {
+  a {
+    background-color: $theme-color;
+  }
+}
+
+.favorite-button-circle-icon {
+  background-position: center;
+  background-size: 16px auto;
+  height: 14px;
+  width: 16px;
+}

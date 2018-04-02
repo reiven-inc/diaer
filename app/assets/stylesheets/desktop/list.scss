@@ -1,0 +1,362 @@
+// リスト関連
+@charset "UTF-8";
+
+// 記事リスト(メインカラム)
+.c-article-list {
+  .item__text {
+    display: table-cell;
+    padding-left: 10px;
+    vertical-align: top;
+  }
+
+  .item__title {
+    font-weight: normal;
+    height: 40px;
+    line-height: 1.4;
+
+    a {
+      color: $text-black-color;
+      display: block;
+      max-height: 44px;
+      overflow: hidden;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .item__explanation {
+    color: $black-9-color;
+    font-size: 69%;
+    line-height: 1.4;
+    margin-top: 6px;
+    max-height: 30px;
+    overflow: hidden;
+  }
+
+  .item__info {
+    margin-top: 6px;
+  }
+
+  .info__list {
+    display: inline-block;
+  }
+
+  .info__author-name {
+    color: $black-86-color;
+    font-size: 69%;
+    line-height: 1.6;
+    margin-right: 20px;
+
+    a {
+      color: $black-86-color;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .item__state {
+    margin-bottom: 8px;
+  }
+
+  .item__delete {
+    margin-top: 5px;
+
+    a {
+      color: $text-black-color;
+      font-size: 75%;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .state__stage {
+    display: inline-block;
+    font-size: 69%;
+    margin-right: 5px;
+    padding: 2px 0;
+    text-align: center;
+    width: 44px;
+  }
+
+  .state__stage_draft {
+    border: 1px solid $black-c-color;
+    color: $text-black-color;
+  }
+
+  .state__stage_modify {
+    border: 1px solid $red-em-color;
+    color: $red-em-color;
+  }
+
+  .state__time {
+    color: $black-9-color;
+    font-size: 81.2%;
+  }
+}
+
+.c-article-list__item {
+  border-bottom: 1px dashed $black-e7-color;
+  display: table;
+  padding: 12px 0;
+  table-layout: fixed;
+  width: 100%;
+
+  &:first-of-type {
+    padding-top: 9px;
+  }
+}
+
+.c-article-item-image-wrap {
+  display: table-cell;
+  position: relative;
+  width: 100px;
+
+  &:hover {
+    opacity: .8;
+  }
+}
+
+.c-article-item-image {
+  background-position: center;
+  background-size: cover;
+  height: 100px;
+  width: 100px;
+}
+
+// 記事リスト(サイドカラム)
+.s-article-list {
+  .item__text {
+    display: table-cell;
+    padding-left: 8px;
+    vertical-align: top;
+    width: 230px;
+  }
+
+  .item__title {
+    font-size: 75%;
+    font-weight: normal;
+    height: 36px;
+    line-height: 1.5;
+    overflow: hidden;
+
+    a {
+      color: $text-black-color;
+      display: block;
+      word-break: break-all;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .item__author-name {
+    color: $black-9-color;
+    font-size: 69%;
+    margin-top: 6px;
+
+    a {
+      color: $black-9-color;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.s-article-list__item {
+  border-bottom: 1px dashed $black-e7-color;
+  display: table;
+  height: 75px;
+  padding: 9px 0 0 6px;
+  position: relative;
+  table-layout: fixed;
+}
+
+.s-article-item-image-wrap {
+  display: table-cell;
+  position: relative;
+
+  &:hover {
+    opacity: .8;
+  }
+}
+
+.s-article-item-image {
+  background-position: center;
+  background-size: cover;
+  height: 60px;
+  width: 60px;
+}
+
+.s-article-item-rank {
+  background-color: $theme-color;
+  border: 1px solid $white-color;
+  border-radius: 50%;
+  color: $white-color;
+  display: block;
+  font-size: 69%;
+  font-style: normal;
+  font-weight: bold;
+  height: 20px;
+  left: 0;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 2px;
+  width: 20px;
+  z-index: 1;
+}
+
+// 記事の分類ラベル
+.article-label {
+  background-color: $theme-color;
+  color: $white-color;
+  display: block;
+  font-size: 50%;
+  left: 0;
+  padding: 3px;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+// .article-labelとセットで指定
+.article-label-large {
+  font-size: 75%;
+  padding: 5px 6px;
+}
+
+// リストの続きをもっと見る際のリンク(サイドカラム)
+.side-list-link {
+  color: $text-black-color;
+  font-size: 75%;
+  margin-top: 6px;
+  text-align: right;
+
+  a {
+    color: $text-black-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.side-list-link_article {
+  margin-top: 14px;
+}
+
+.side-list-link__icon {
+  color: $black-6-color;
+  font-size: 62.5%;
+  padding-right: 3px;
+  vertical-align: 1.5px;
+}
+
+$curator-list-item-width: 322px;
+$curator-list-item-interval: 22px;
+
+// ライター一覧、アカウント一覧
+.curator-group {
+  .group__list {
+    margin-top: 25px;
+    overflow: hidden;
+  }
+
+  .group__item {
+    border-bottom: 1px solid $black-e5-color;
+    float: left;
+    margin: 15px $curator-list-item-interval 0 0;
+    padding-bottom: 14px;
+    width: $curator-list-item-width;
+
+    &:nth-of-type(3n) {
+      margin-right: 0;
+    }
+
+    a {
+      display: table;
+      table-layout: fixed;
+
+      &:hover {
+        .item__img {
+          opacity: .8;
+        }
+
+        .text__name,
+        .text__explanation {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .item__img {
+    @include img-cover-wrap(70px, 70px);
+    border-radius: 50%;
+  }
+
+  .item__text {
+    display: table-cell;
+    padding-left: 14px;
+    vertical-align: middle;
+  }
+
+  .text__name {
+    color: $text-black-color;
+    font-size: 87.5%;
+    line-height: 1.3; // overflow: hidden指定時にline-heightが1だとsafariで字の上が切れる、1.3以上でないと
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 238px; // レイアウトが変わると変更可能性あり
+  }
+
+  .text__explanation {
+    color: $black-6-color;
+    font-size: 75%;
+    line-height: 1.67;
+    max-height: 43px;
+    overflow: hidden;
+    padding-top: 3px;
+  }
+}
+
+
+// ページネーション
+.c-pagination {
+  letter-spacing: -.4em;
+  padding: 20px 0;
+  text-align: center;
+
+  .current,
+  a {
+    border: 1px solid $black-e-color;
+    border-bottom: 2px solid $black-e-color;
+    border-radius: 3px;
+    color: $black-5-color;
+    display: inline-block;
+    font-size: 87.5%;
+    letter-spacing: normal;
+    margin: 0 6px;
+    padding: 10px 0;
+    width: 36px;
+  }
+
+  a:hover,
+  .current {
+    background-color: $black-e-color;
+  }
+
+  .gap {
+    margin-right: 6px;
+  }
+}

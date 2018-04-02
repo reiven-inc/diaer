@@ -1,0 +1,15 @@
+// jQuery UIのスタイル調整
+@charset "UTF-8";
+
+.ui-menu {
+  .ui-menu-item-wrapper {
+    font-family: $root-font-family;
+    font-size: 16px;
+
+    &.ui-state-active {
+      background: $black-f3-color;
+      border: 1px solid $black-9-color;
+      color: $text-black-color;
+    }
+  }
+}

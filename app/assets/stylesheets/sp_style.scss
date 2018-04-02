@@ -1,0 +1,59 @@
+// 制作者定義のcssファイル(モバイル端末用)
+
+// sanitizeの設定変数
+$root-line-height: 1;
+$selection-color: inherit;
+
+// リセット
+@import 'vendors/sanitize';
+
+// 変数
+@import 'mobile/variables';
+
+// アイコン関連
+@import 'mobile/icons';
+
+// ヘッダー、フッターなどの共通部分、共通スタイル
+@import 'mobile/common';
+
+// モーダルウィンドウ関連
+@import 'mobile/modal';
+
+// ページの上部にあるメインのイメージや情報部分
+@import 'mobile/page_top';
+
+// リスト関連
+@import 'mobile/list';
+
+// タブ関連
+@import 'mobile/tabs';
+
+// 記事関連
+@import 'mobile/articles';
+
+// クイズ関連
+@import 'mobile/questions';
+
+// 動画関連
+@import 'mobile/videos';
+
+// お気に入りボタン
+@import 'mobile/favorite';
+
+// キーワード関連
+@import 'mobile/keyword';
+
+// フォーム関連
+@import 'mobile/form';
+
+// マイページ(お気に入り、設定)関連
+@import 'mobile/mypage';
+
+// 静的情報ページ関連(staticコントローラーのページ)
+@import 'mobile/static';
+
+// お知らせ
+@import 'mobile/notices';
+
+// アカウント、アカウント画像
+@import 'mobile/accounts';

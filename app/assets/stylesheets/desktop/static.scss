@@ -1,0 +1,320 @@
+// 静的情報ページ関連(staticコントローラーのページ)
+@charset "UTF-8";
+
+// 利用規約, プライバシーポリシー
+.law-container {
+  border-top: 1px solid $black-law-color;
+  color: $text-black-color;
+  font-size: 87.5%;
+  line-height: 1.29;
+  margin: 10px 0 20px;
+
+  .law__leave {
+    margin-top: 40px;
+  }
+
+  .law__heading {
+    color: $black-86-color;
+    font-size: 128.6%;
+    font-weight: normal;
+    margin: 38px 0 12px;
+  }
+
+  .law__list {
+    margin-top: 12px;
+    padding-left: 40px;
+  }
+
+  .law__list-item {
+    list-style-type: decimal;
+
+    &.disc {
+      list-style-type: disc;
+    }
+
+    &:not(:first-of-type) {
+      margin-top: 3px;
+    }
+  }
+
+  .nested-list {
+    margin-top: 3px;
+
+    .law__list-item {
+      counter-increment: count;
+      list-style-position: inside;
+      list-style-type: none;
+
+      &::before {
+        content: '(' counter(count) ') ';
+      }
+    }
+  }
+
+  .law__term {
+    font-weight: bold;
+    margin-top: 18px;
+  }
+
+  .law__description {
+    margin-top: 6px;
+  }
+
+  .law__list-head {
+    margin: 18px 0 -6px;
+  }
+}
+
+// よくある質問
+.qa-box {
+  margin-top: 20px;
+
+  .qa-list {
+    border: 1px solid $black-e-color;
+
+    &:not(:first-of-type) {
+      border-top: 0;
+    }
+  }
+
+  .qa-item {
+    color: $text-black-color;
+    line-height: 1.5;
+    padding: 18px 48px 18px 52px;
+    position: relative;
+
+    &::before {
+      background-size: 20px 11px;
+      content: '';
+      display: block;
+      height: 22px;
+      left: 19px;
+      position: absolute;
+      top: 18px;
+      width: 20px;
+    }
+  }
+
+  .qa-question {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAWCAMAAACFUC6CAAAAXVBMVEUAAACqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqoJMaEWAAAAHnRSTlMA+TgcCLMs8evp5NzRx6OZeGtiWU5CJA/avqqRhxXd0OPUAAAAw0lEQVQoz42SWRKDIBBEOwLu+4br3P+YcahQfCSjeR/aVD9LHATiSuEBVcWAXahQD15Bi4Uhony+8+b8Ugxaushi2YszNlqg43saSV6Uct9x7DklkeAl3PZwDK8rv6Zf3uSqwS9HtxxDLxbhwUB4lbgVRth8+LiAH4c0Lo8fsHAAdPjlQeKRqYK7HY6ds/QTqJLbhmPDqVQQOJ1Za10774SIrdgwhq+VxQ16pQ+rxi3akMN4TzY39jaNZ2qiGn/RNPjmDdkMFYVCaZ22AAAAAElFTkSuQmCC) no-repeat 720px 24px;
+    background-size: 20px 11px;
+    cursor: pointer;
+
+    &::before {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAsBAMAAADlQedIAAAAMFBMVEUAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV67uviAAAAD3RSTlMAd0TuEd2IIjO7ZsyqmVV73urAAAABKElEQVQoz2MgHRQpKTWgCant/w8EsUuQxZb+h4DPIgixSiAfKqoAE+Ow/w8Hv2CCzf+RANQ2lnhkwRCIIBuYc6+gaz6I/ggRrAexI4AMPnuQVQ5gwXw4Ux8kvQAsCJL/BGYxggQPgB0EYk2AWAliGsClH0CMPw9kfgcxeECCUBfLw0ziBDJ+QwX1YW5iBjL+QAX7YYL8UAaYTUXBP+i2swIZP6GC7+HuRHY8zEe8SOG9H8XvCWAxJtRQMgELcqKG5x+4kf8RIf//Ciyy/iLF0eckBkVwrJozwCMBAQSg8b4fLoLwBoM3TARiOFTpfCTBrwugolzxyKKw5MiXDeL+zoYkxwKYuexKSkoMLOcRDkAANmyCDKrYBFnkkQXhZieDwgkDKApiz2gAjndlj64fLDIAAAAASUVORK5CYII=);
+      background-size: 20px auto;
+    }
+  }
+
+  .qa-question_open {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAWCAMAAACFUC6CAAAAWlBMVEUAAACqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqoXG+8ZAAAAHXRSTlMA+eo4HAjcLBHJ8eSyo5l4YllOQiTTvrSqkYdsa4+B6/UAAAC7SURBVCjPjZLZFoMgDERxAUHFfVf+/zdr0nqsBtB5YibXiInMoqJgr6SN0S8wPpldE3/kcoPK+QM3mJ8GLykVdsOuSnq4HgjNufaTMXIFTghOfezgBFTnr5nhLKxkl0FtOewCLusol4RQKc+gBB8mdy5Cbv2PViSjG5dCWl3DCrL0QrbBHgU1u6nGuD2DBoPmsKTgepC+ynoV5+U3+nF0HBsZl3vAI1mAdWUjk4KulP4EQu6tFeEIqRL2AXMMFIeZ+6tQAAAAAElFTkSuQmCC);
+  }
+
+  .qa-answer {
+    display: none;
+
+    &::before {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAsBAMAAADlQedIAAAAMFBMVEUAAADaFBTaFBTaFBTaFBTaFBTaFBTaFBTaFBTaFBTaFBTaFBTaFBTaFBTaFBTaFBT/5EjmAAAAD3RSTlMARO7dd8yZVSIRu6pmM4ipjzxiAAABBUlEQVQoz72Ry9EBURCF//q9y6OoEoC1DRmQwRABGVASIAMysLCzIgIyIAMyUOX9bufONd192TuLruqvZurcPufv10pViKj+Af8J2n3ALhktXdjy4dqFJR+WHRYjXw8HJi18OnBI9G2/IKushjMA8/ymYgns1w1GQR+Jfb/COCkYwX4OYRwV7GOvZTC2CnrYq2mC2gIbWHs4VdvHsR1sKBeGGWNu47szNL4PG/SN4cqmFiVoEEBzS3E8Hhk4D2CFRBNOmCX2UQ33Uq/owPVq9aTeaQ7KG1i1CZeCIBIG1jjhrbRytvVKuB7bD6WGPte8kMIibO9JtmHuvoMXL99pN/A7vvyVXmMqHw4WFo3rAAAAAElFTkSuQmCC);
+      background-size: 20px auto;
+    }
+
+    p:not(:first-of-type) {
+      margin-top: 15px;
+    }
+
+    a {
+      color: $red-em-color;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.qa-contact-box {
+  border: 1px solid $black-e-color;
+  margin: 35px 0 20px;
+  padding: 24px 0;
+  text-align: center;
+
+  .qa-contact-box__button {
+    margin-top: 30px;
+
+    a {
+      @include button-s(260px);
+      @include button-theme;
+
+      &:hover {
+        opacity: .8;
+      }
+    }
+  }
+}
+
+// Aboutや運営会社ページトップの写真エリア
+.catch-area {
+  background-position: center;
+  background-size: cover;
+  color: $white-color;
+  height: 428px;
+
+  .catch-area__cover {
+    background-color: $transparent-black-3-color;
+    height: 100%;
+  }
+
+  .container {
+    height: 100%;
+    position: relative;
+  }
+}
+
+.catch-area_company {
+  background-image: url(#{$img-root}diaer/back_company.jpg);
+
+  .catch-company {
+    font-size: 350%;
+    font-weight: normal;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.catch-area_about {
+  background-image: url(#{$img-root}diaer/back_about.jpg);
+
+  .catch-about__title {
+    font-size: 252%;
+    font-weight: normal;
+    padding-top: 102px;
+
+    img {
+      vertical-align: -4px;
+    }
+  }
+
+  .catch-about__explanation {
+    line-height: 2.19;
+    margin-top: 70px;
+  }
+}
+
+// 運営会社情報
+.company-container {
+  margin: 60px auto 80px;
+
+  .company-container__left {
+    float: left;
+    width: 50%;
+  }
+
+  .company-container__right {
+    float: right;
+    width: 50%;
+  }
+
+  .company__list {
+    color: $text-black-color;
+    font-size: 87.5%;
+    line-height: 1.72;
+    padding-top: 34px;
+  }
+
+  .company__term {
+    clear: both;
+    float: left;
+    font-weight: bold;
+    width: 124px;
+
+    &:not(:first-of-type) {
+      padding-top: 12px;
+    }
+  }
+
+  .company__description {
+    float: left;
+
+    a {
+      color: $black-9-color;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    &:not(:first-of-type) {
+      padding-top: 12px;
+    }
+  }
+
+  .company__map {
+    border: 5px solid $white-color;
+    box-shadow: 2px 2px 2px $transparent-black-3-color;
+    height: 300px;
+    width: 100%;
+  }
+}
+
+// AboutのConceptエリア
+.concept-container {
+  background-color: $black-f6-color;
+  padding: 30px 0 100px;
+
+  .concept-text {
+    padding-top: 20px;
+  }
+
+  .text__paragraph {
+    color: $text-black-color;
+    font-size: 112.5%;
+    line-height: 1.94;
+    margin-top: 35px;
+    text-align: center;
+  }
+}
+
+$about-left-width: 520px;
+$about-right-width: 470px;
+
+// About特徴エリア
+.about-feature {
+  overflow: hidden;
+  padding-bottom: 30px;
+
+  .about-left {
+    float: left;
+    width: $about-left-width;
+  }
+
+  .feature__title {
+    border-left: 3px solid $theme-color;
+    color: $text-black-color;
+    font-size: 125%;
+    height: 31px;
+    line-height: 30px;
+    margin-top: 40px;
+    padding-left: 7px;
+  }
+
+  .feature__explanation {
+    color: $text-black-color;
+    font-size: 94%;
+    line-height: 1.7;
+    margin-top: 10px;
+  }
+
+  .about-right {
+    float: right;
+    padding-top: 110px;
+    width: $about-right-width;
+
+    img {
+      width: 100%;
+    }
+  }
+}

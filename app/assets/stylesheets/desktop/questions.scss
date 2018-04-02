@@ -1,0 +1,333 @@
+// クイズ関連
+@charset "UTF-8";
+
+// 選択肢
+.question-select {
+  background-color: $black-f2-color;
+  border: 1px solid $transparent-black-1-color;
+  color: $black-3d-color;
+  cursor: pointer;
+  font-size: 118.8%;
+  font-weight: bold;
+  margin-bottom: 15px;
+  padding: 11px;
+
+  &:hover {
+    background-color: $question-select-hover-color;
+  }
+
+  .question-answered & {
+    cursor: inherit;
+
+    &:hover {
+      background-color: $black-f2-color;
+    }
+  }
+}
+
+.question-select-correct {
+  background-color: $question-correct-color;
+  color: $white-color;
+
+  .question-answered & {
+    &:hover {
+      background-color: $question-correct-color;
+    }
+  }
+}
+
+.question-select-incorrect {
+  background-color: $question-incorrect-color;
+  color: $white-color;
+
+  .question-answered & {
+    &:hover {
+      background-color: $question-incorrect-color;
+    }
+  }
+}
+
+.question-select-checkbox {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAAAQlBMVEUAAAA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3///89PT2RkZHb29vU1NT39/dSUlL6+vrX19fc3Nx/EnZ+AAAADHRSTlMA+slgkYtP9ZPKzFP9NSuiAAAApUlEQVQ4y+2UWQ6AIAxEKwJugOBy/6vKSAyJiuUAvg9j0peWEKaU0Ep09kYnlKZMK2wB0V6OtB9I1gH9OQt/jfPB3AjeNahhIs6zzOaVeYnFgUijD5x3C700qfh1poiLZXVO82XJ4x4I/daytOI0ZCPmA9R/6ZcqJe7RBUS56vlWBYGJ1J4iRQMbzhzz7RnzLcecenZhAMk5/BLLTHJ8rsNRTql6AAyfOdgZKYImAAAAAElFTkSuQmCC);
+  background-size: 18px;
+  display: inline-block;
+  height: 18px;
+  margin-right: 14px;
+  vertical-align: bottom;
+  width: 18px;
+
+  .question-select-on & {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAAAk1BMVEUAAAA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3///89PT1CQkLU1NTb29uRkZFSUlL7+/v19fX4+PhJSUnNzc3w8PDe3t56enpeXl5NTU1ERETq6urk5OTX19fDw8O/v79ubm5oaGhkZGRYWFjn5+fY2NjPz8/Hx8e6urq0tLSbm5uGhoZ1dXV0dHQc7MCsAAAADHRSTlMAylDIkYv1YJP6YcxKWNL7AAABJElEQVQ4y42U6bLCIAyFsYtrANvS1mrrdtW73+v7P50J6DhTgXJ+QCfnA9KZJMwoSuMx72kcpxF7ajLiDo0mDybhHiWDDGmq36IvkUkFPSmZCfLmCFE++RKsWuaUF/4X3YOMg6K7IpbimoFTGdopi3GVbkiiHbMZroUbKtCeMY6yucd/c5R8F/Ql+N8QVHcY/vVDsqLw2gs1mrkWPmjXUvCttOVUK7O/5xQ7K7BAn+Kkz24vFNqswAI1lXlhtaHIBRkLpL11oc6051uwQrLT1EkzO7BDUAt+V9uAC4LDnao+wA3BUTOdBB8E31SlNfgh+KnaA7xCQ0WnqJWDyjeoEYJaKqw52dy0+b7sE+X+2eZsOjgwSImfCR9ipChZvI7DRRIZ9wbfGD8tOOlbIwAAAABJRU5ErkJggg==);
+
+  }
+}
+
+// 解説、結果用のボックス
+.question-box {
+  border: 1px solid $black-d8-color;
+  padding: 20px;
+}
+
+.question-box-sticky {
+  border-top-width: 0;
+}
+
+// 正解不正解
+.question-comment-result {
+  display: block;
+  font-size: 187.5%;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.question-comment-result-correct {
+  color: $question-correct-color;
+}
+
+.question-comment-result-incorrect {
+  color: $question-incorrect-color;
+}
+
+.question-comment-answer {
+  color: $black-12-color;
+  font-size: 125%;
+  font-weight: bold;
+}
+
+// 結果
+.question-result {
+  margin-top: 14px;
+}
+
+.question-result-title {
+  color: $black-79-color;
+  font-size: 93.8%;
+  font-weight: bold;
+  line-height: 1.4;
+  margin-bottom: 18px;
+}
+
+.question-result-score {
+  color: $black-12-color;
+  font-size: 187.5%;
+  font-weight: bold;
+}
+
+.question-result-comment {
+  color: $black-79-color;
+  font-size: 112.5%;
+  font-weight: bold;
+  line-height: 1.56;
+  margin-top: 20px;
+}
+
+.question-result-share-title {
+  color: $black-12-color;
+  font-size: 162.5%;
+  font-weight: bold;
+  margin-bottom: 34px;
+}
+
+.question-button {
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  display: block;
+  line-height: 40px;
+  text-align: center;
+
+  &::before {
+    background-size: 16px;
+    content: '';
+    display: inline-block;
+    height: 16px;
+    margin-right: 8px;
+    vertical-align: -2px;
+    width: 16px;
+  }
+
+  &:not(:first-of-type) {
+    margin-top: 8px;
+  }
+}
+
+.question-button_retry {
+  border-color: $theme-color;
+  color: $theme-color;
+
+  &::before {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAdVBMVEUAAADwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIDwgIAuuDfGAAAAJnRSTlMA+7oq9/JCFN7s5K1wYoxLIAno1KVrXRsOxntQO8+gkjczsJqId+AHIYwAAAEJSURBVDjLpZPZmoMgDIVDBbV1Zcalte0sXXz/RyxB+IJFuOl/IyRHQkICDm1Z5Gye96c6hQ3S3UwcSqlMSULurFg8JGlgYiewXL6MnQlhJbmKZv0N16Zd1arNMf3dW5Fc/H9cuyni8WEEiyk74Nk9EJfcCBpAftB/dhNiNoT+6x9XJTgkVyuocVtgfFgzmBgF3oDZy7jIXid+VctqfQBlMomlEJ0SDLBFVnOuPt9K0MI2I4ZWBwmIgVX/TMCjIcwlx6CX0gxAhQpBpfYZugrosXzOyp56z02M+Fq91zAUGbMTo9Ny6zMS9M8VBJpWTtpyh3jbdwCBwaF+jI5efHifEnza8pbz9/F/AV1jLFFClZWnAAAAAElFTkSuQmCC);
+  }
+
+  &:hover {
+    background-color: $theme-color;
+    color: $white-color;
+
+    &::before {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAilBMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////2N2iNAAAALXRSTlMAuvcqFAL96PvkrXBi8d9LCfTTi2tdREEeDuzaxqNQOxqlnZKNe3c3MyYkzLD6J3l1AAABGklEQVQ4y6WT23qCMAyAIwJypg5QEIfo1M1tff/XW9K1thXLjf8N+ZLQnEHTpkkfcb7aV5sApmwXXBOnDFXLpTb7CbeJy+AS7UFxWEl9lK+VS4/RlL30OLHIvjF4t/nYKScGgk9PmHXErpIO/yo/RjGsQXMopEMJxInsg1lQyCXiry+SUjC4vSmHCpCE4oNF0MgYCWUQqWRMWC0K/0Ex0w9YdJec8x0K7+jQwDP8yvPwQwm18JyRQmNrc5gDHyhec8A5rN1WnaQbd5mEbpQDZ6uJ5piBHtaUAfVba9w2I02rvqcZDo+Rqbp8NFbOfuPWcyQDx9Kyq9CcwF778GHtjwHMHs4Z7bOnNz3e0DBfGUxp09/Co/M/m+f/BzK1NTxINrusAAAAAElFTkSuQmCC);
+    }
+  }
+}
+
+.question-button_facebook {
+  background-color: $blue-facebook-color;
+  border-color: $blue-facebook-color;
+  color: $white-color;
+
+  &::before {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAARVBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////9SnXPCAAAAFnRSTlMA8CBw99DdsBnt58Nnp5uRhnFSRC4OazNCSAAAAHdJREFUOMvtz0sOgCAMRdGHreD/r/tfqpWRCaGNjL0jkp6QFsSXEhNkrgpcRqWg9Z3Lg25t8JQDtYw1wBV0MMEAG6RqDiFkwAGpV86MK7QWcKWglpq4gzx8Chze7RYYLLBYYEwBk3TG7+XhzTN/8AmwDhjEGmC6ATUdRIM031VYAAAAAElFTkSuQmCC);
+  }
+
+  &:hover {
+    opacity: .8;
+  }
+}
+
+.question-button_twitter {
+  background-color: $blue-twitter-color;
+  border-color: $blue-twitter-color;
+  color: $white-color;
+
+  &::before {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAilBMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////2N2iNAAAALXRSTlMA3AP52Qv1uWrwnFUbF+muln1vY2FbRD0wDwfgzsO0k46KhXVQOSokIevlwHYdIrBRAAAA6klEQVQ4y8WR2baCMAxF0xYoICCCDOI8Xe+U//89MSI2Spdvut+afTilK/AR3P1C4Tz9hpaqac8T7r8EEmoa58tVO5giS0QJ3gkuNSHiRt4DY8Mneba7TnR88zEyRCtC6vK7khHzTkT/QAh/dgn4zNPI/emOSu+rqECDv1urDU1+m2/QQkiBEK1MXtyAJQWkY/PKBaL2LIEVdBwFDnLo91Ovh0qE7BeMgxTQkw75pbHiRj977wQGMkvwgRFwZOUw78MDB/ZUxb173DGNv6Vhi0WAHJXO+PcZuz1Yn+CJ+n/seIjeXG/LBt7OGQfgVXrtw5r5AAAAAElFTkSuQmCC);
+  }
+
+  &:hover {
+    opacity: .8;
+  }
+}
+
+.question-button_margin {
+  margin-top: 32px;
+}
+
+// クイズ編集
+.question-edit-item {
+  border: 1px solid $black-e7-color;
+  margin-bottom: 10px;
+  padding: 20px;
+
+  &:not(:first-of-type) {
+    margin-top: 40px;
+  }
+}
+
+.question-form-group {
+  &:not(:first-of-type) {
+    margin-top: 40px;
+  }
+}
+
+.question-edit-headline {
+  color: $text-black-color;
+  font-size: 87.5%;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.question-choice-number {
+  border: 1px solid $black-c-color;
+  border-radius: 50%;
+  color: $black-a-color;
+  display: inline-block;
+  font-size: 87.5%;
+  line-height: 23px;
+  text-align: center;
+  width: 25px;
+}
+
+.question-edit-display-item_question-image {
+  margin-bottom: 20px;
+}
+
+// .articlecontent-show-item_headlineの上書き用
+.question-edit-item_headline {
+  margin-top: 0;
+}
+
+// フォーム用
+// .edit-textboxと一緒に使用
+.edit-textbox_question {
+  padding: 5px 8px;
+}
+
+// .edit-textboxと一緒に使用
+.edit-textbox_choice {
+  display: inline-block;
+  margin: 0 0 14px 5px;
+  padding: 5px 8px;
+  width: 94%;
+}
+
+.select-thin-arrow {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAQCAMAAAA7+k+nAAAAV1BMVEUAAACmpqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqampqYewlDiAAAAHHRSTlMAB/r15N3HvaSMXTwuHRYR7enNtJ2Wc21mVEM1vUS+SwAAAIFJREFUGNNtjlkOgCAMRFuURQRxX3v/cxpiSAPyPuBl0nQKxkIFa2ATzz9/xAao2qHMh1ZhfDXmOepvthcdZHSi/+QkmxXTmXRtHOeuWXmpkiF5kLE44SedVE8+KR/AxcxBV/wuOqDANC4WGyjBWYYgZ4QfflyW0UOFm+iGKvsOzAthmwSVBzrdegAAAABJRU5ErkJggg==) no-repeat center right 9px;
+  background-size: 12px;
+  border: 1px solid $black-d-color;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 81.3%;
+  height: 35px;
+  line-height: 1.5;
+  padding: 8px 8px 7px;
+  width: 198px;
+}
+
+.question-edit-button-area {
+  margin-top: 30px;
+}
+
+.question-comment-group {
+  margin-top: 40px;
+}
+
+.comment-edit-item {
+  margin-top: 50px;
+}
+
+.question-insert-icon {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAeCAMAAABZj73OAAAAaVBMVEUAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMz////MzMyqqqri4uL8/Pzp6en29vbs7Ozm5ub+/v7w8PBfvS+MAAAAGHRSTlMA8q8m+wTs49nBopFvXU0/MRwTDM7NgX+QWmqXAAAAlElEQVQ4y7XUxw6DMBAEUBecSnobNyD5/4/MjT0YCUbIc3/SWt4dpazRfj4nJbE6J8ym01aIyViS/HIj0QmLEo8j8SgSAsp8/Zkl+G1uLMGwdyxB/NAkNReWoN/eWYLB0ASxpUnXXFmCfvcQEiZTjnZYQYjB6j8/thW/Uham/lrGd8UTk0Pm64IvJbr6nm5NwfI1/ge27X1NSqkwOQAAAABJRU5ErkJggg==);
+  display: block;
+  height: 30px;
+  margin: 20px 0;
+  width: 50px;
+
+  &:hover {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAeCAMAAABZj73OAAAAY1BMVEUAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMz////MzMzwgID8/Pzp6enh4eH29vbs7Ozl5eXw8PDj4+ONqZaYAAAAFnRSTlMA8q8m+wTs49nOwaKRgG9dTT8xHBMMdrFujwAAAJFJREFUOMu11McOgzAQBFAXSIeQNm5A+P+v5IYPIMGs5Lk/ydbujlLWaLefp8qxOgbsptc2ExNxJPFaL0QHHEp6LMRhFe+3jOto8j99WILxVrMEqaFJqF4swXD+sgSjoQlSS5O+erMEw+WXid/KGk93CeEfVv77qeVHKViY8muZGsGJlT9k1/GlJKo+ecHyNT4DNBpzI5Dq1NwAAAAASUVORK5CYII=);
+  }
+}
+
+// 結果メッセージ
+.question-result-edit {
+  padding: 0 10px;
+}
+
+.question-result-form-group {
+  margin-top: 20px;
+}
+
+.question-result-edit-score {
+  color: $text-black-color;
+  display: block;
+  font-size: 81.3%;
+  margin-bottom: 10px;
+}
+
+.question-result-edit-textbox {
+  border: 1px solid $blue-gray-color;
+  border-radius: 3px;
+  color: $text-black-color;
+  font-size: 75%;
+  line-height: 1.5;
+  padding: 6px;
+  width: 100%;
+}
+
+// .edit-buttonとセットで指定
+.edit-button-result {
+  margin-top: 20px;
+}
+
+.question-results-message {
+  color: $red-em-color;
+  font-size: 87.5%;
+}

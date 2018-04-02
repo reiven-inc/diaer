@@ -1,0 +1,108 @@
+// タブ関連CSS
+@charset "UTF-8";
+
+// ヘッダー下のタブ
+.top-tab {
+  border-bottom: 1px solid $black-e-color;
+}
+
+.top-tab-list {
+  overflow: hidden;
+}
+
+.top-tab-item {
+  float: left;
+
+  a {
+    color: $black-9-color;
+    display: block;
+    font-size: 87.5%;
+    height: 45px;
+    line-height: 42px;
+    text-align: center;
+    width: 100px;
+  }
+
+  &.active {
+    a {
+      border-bottom: 3px solid $theme-color;
+      color: $theme-color;
+    }
+  }
+}
+
+.tabs {
+  margin: 10px 0;
+}
+
+// ユーザー詳細やマイページなどで使用する灰色のカテゴリー分けタブ
+.tab-list {
+  border-bottom: 1px solid $black-d-color;
+}
+
+.tab-list__item {
+  display: inline-block;
+  margin: 0 5px -1px 0;
+  vertical-align: top;
+
+  &:nth-of-type(5n) {
+    margin-right: 0;
+  }
+
+  a {
+    background-color: $black-fa-color;
+    border: 1px solid $black-d-color;
+    border-radius: 3px;
+    color: $black-6-color;
+    display: block;
+    font-size: 81.2%;
+    line-height: 36px;
+    text-align: center;
+    width: 127px;
+    z-index: 1;
+
+    &:hover {
+      background-color: $black-f2-color;
+    }
+  }
+
+  &.tab-list__item_active a {
+    background-color: $white-color;
+    border-bottom: 1px solid $white-color;
+    color: $text-black-color;
+    font-weight: bold;
+    padding-bottom: 6px;
+  }
+}
+
+// 小カテゴリー分けタブ(.tab-listの下で使うことが多い)
+.s-tab-list {
+  border-bottom: 1px solid $black-e7-color;
+
+}
+
+.s-tab-list__item {
+  display: inline-block;
+
+  a {
+    color: $black-6-color;
+    display: block;
+    font-size: 75%;
+    padding: 11px;
+    text-align: center;
+
+    &:hover {
+      background-color: $black-fa-color;
+      border-bottom: 2px solid $black-fa-color;
+    }
+
+    &:not(:first-of-type) {
+      margin-right: 4px;
+    }
+  }
+
+  &.s-tab-list__item_active a {
+    border-bottom: 2px solid $theme-color;
+    color: $text-black-color;
+  }
+}

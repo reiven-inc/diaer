@@ -1,0 +1,48 @@
+// タブ関連
+@charset "UTF-8";
+
+.c-tab-list {
+  background-color: $white-color;
+  border-bottom: 1px solid $black-c6-color;
+  display: flex;
+}
+
+.c-tab-list__item {
+  flex-basis: 50px;
+  flex-grow: 1;
+
+  a {
+    color: $black-9-color;
+    display: block;
+    font-size: 87.5%;
+    padding: 15px 0 13px;
+    text-align: center;
+  }
+}
+
+.c-tab-list__item_double {
+  a {
+    color: $black-5-color;
+    padding: 7px 0;
+  }
+}
+
+.c-tab-list__item_active {
+  a {
+    border-bottom: 3px solid $theme-color;
+    color: $black-5-color;
+  }
+}
+
+.c-tab-item-double__list {
+  text-align: center;
+}
+
+.c-tab-item-double__count {
+  font-weight: bold;
+}
+
+.c-tab-item-double__name {
+  font-size: 64.3%;
+  padding-top: 5px;
+}
